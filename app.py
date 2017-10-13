@@ -4,6 +4,7 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister
+from resources.pic import PicUploader
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -20,6 +21,7 @@ jwt = JWT(app, authenticate, identity)
 
 # API Endpoints
 api.add_resource(UserRegister, '/user')
+api.add_resource(PicUploader, '/api/uploader')
 
 if __name__ == '__main__':
     from db import db

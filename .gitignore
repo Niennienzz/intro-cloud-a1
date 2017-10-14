@@ -1,3 +1,7 @@
+#
+# Based on general gitignore file from:
+# https://github.com/github/gitignore/blob/master/Python.gitignore
+#
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -102,3 +106,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Picture storage
+/pics
+
+# Visual studio code
+.vscode/
+
+# Mac
+.DS_Store

@@ -1,7 +1,9 @@
 from db import db
 from models.user import UserModel
 
+
 class PicurlModel(db.Model):
+
     __tablename__ = 'picurls'
 
     id = db.Column(db.Integer, primary_key=True)

@@ -3,6 +3,7 @@ from hashlib import sha256
 from db import db
 from models.const import ALPHABET
 
+
 class UserModel(db.Model):
     __tablename__ = 'users'
 

@@ -1,11 +1,13 @@
 <component name="ProjectDictionaryState">
   <dictionary name="zhehui">
     <words>
+      <w>filepath</w>
       <w>picurl</w>
       <w>pwdsalt</w>
       <w>sqlalchemy</w>
       <w>sqlite</w>
       <w>tablename</w>
+      <w>thum</w>
     </words>
   </dictionary>
 </component>

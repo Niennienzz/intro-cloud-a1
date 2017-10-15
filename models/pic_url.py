@@ -2,19 +2,19 @@ from db import db
 from models.user import UserModel
 
 
-class PicurlModel(db.Model):
+class PicURLModel(db.Model):
 
     __tablename__ = 'picurls'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(UserModel.id))
     origin = db.Column(db.String(100))
-    suffix_thumb = db.Column(db.String(25))
-    suffix_trans1 = db.Column(db.String(25))
-    suffix_trans2 = db.Column(db.String(25))
-    suffix_trans3 = db.Column(db.String(25))
+    suffix_thumb = db.Column(db.String(100))
+    suffix_trans1 = db.Column(db.String(100))
+    suffix_trans2 = db.Column(db.String(100))
+    suffix_trans3 = db.Column(db.String(100))
 
-    user = db.relationship('UserModel', foreign_keys='PicurlModel.user_id', lazy='joined')
+    user = db.relationship('UserModel', foreign_keys='PicURLModel.user_id', lazy='joined')
 
     def __init__(self, user_id, origin, thumb, t1, t2, t3):
         self.user_id = user_id

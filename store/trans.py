@@ -30,27 +30,35 @@ class PicTrans:
     def trans(self):
         # make thumbnail
         thum_path = path.join(path.dirname(self.origin_path), self.thumb)
-        with Image(blob=self.data) as img:
-            img.sample(100, 100)
-            self.pic_stores.append(PicStore(thum_path, img.make_blob()))
+        with Image(blob=self.data) as image:
+            with image.clone() as img:
+                img.transform(resize='x200>')
+                self.pic_stores.append(PicStore(thum_path, img.make_blob()))
 
         # make trans1
         trans1_path = path.join(path.dirname(self.origin_path), self.trans1)
-        with Image(blob=self.data) as img:
-            img.sample(100, 100)
-            self.pic_stores.append(PicStore(trans1_path, img.make_blob()))
+        with Image(blob=self.data) as image:
+            with image.clone() as img:
+                img.flop()
+                self.pic_stores.append(PicStore(trans1_path, img.make_blob()))
 
         # make trans2
         trans2_path = path.join(path.dirname(self.origin_path), self.trans2)
-        with Image(blob=self.data) as img:
-            img.sample(100, 100)
-            self.pic_stores.append(PicStore(trans2_path, img.make_blob()))
+        with Image(blob=self.data) as image:
+            with image.clone() as img:
+                img.evaluate(operator='leftshift', value=1, channel='red')
+                self.pic_stores.append(PicStore(trans2_path, img.make_blob()))
 
         # make trans3
         trans3_path = path.join(path.dirname(self.origin_path), self.trans3)
-        with Image(blob=self.data) as img:
-            img.sample(100, 100)
-            self.pic_stores.append(PicStore(trans3_path, img.make_blob()))
+        with Image(blob=self.data) as image:
+            with image.clone() as img:
+                frequency = 3
+                phase_shift = -90
+                amplitude = 0.2
+                bias = 0.7
+                img.function('sinusoid', [frequency, phase_shift, amplitude, bias])
+                self.pic_stores.append(PicStore(trans3_path, img.make_blob()))
 
     def save(self):
         result = []
@@ -58,6 +66,8 @@ class PicTrans:
             filepath, ok = store.save()
             if ok:
                 result.append(filepath)
+            else:
+                result.append('')
         return result
 
     def trans_save(self):

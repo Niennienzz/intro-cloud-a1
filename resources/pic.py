@@ -5,7 +5,7 @@ from store.trans import PicTrans
 from models.pic_url import PicURLModel
 
 
-class PicUploader(Resource):
+class PicResource(Resource):
 
     @jwt_required()
     def post(self):
@@ -21,3 +21,24 @@ class PicUploader(Resource):
         pic_url.save_to_db()
 
         return {'message': 'file uploaded successfully'}
+
+    @jwt_required()
+    def get(self, _id):
+        pic_url = PicURLModel.find_by_id(_id)
+        if pic_url:
+            return pic_url.json()
+        return {'message': 'image not found'}
+
+    @jwt_required()
+    def delete(self, _id):
+        pic_url = PicURLModel.find_by_id(_id)
+        if pic_url:
+            pic_url.delete_from_db()
+        return {'message': 'image deleted'}
+
+
+class PicListResource(Resource):
+
+    @jwt_required()
+    def get(self):
+        return {'data': list(map(lambda x: x.json(), PicURLModel.find_by_user_id(current_identity.id)))}

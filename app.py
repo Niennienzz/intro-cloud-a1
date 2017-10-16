@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
 from flask_jwt import JWT
 
@@ -25,7 +25,11 @@ def create_tables():
 # Authorization
 jwt = JWT(app, authenticate, identity)
 
+
 # Web Site Endpoints
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 # API Endpoints

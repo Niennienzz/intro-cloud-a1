@@ -6,7 +6,8 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister
-from resources.pic import PicResource, PicListResource
+from resources.pic import PicResource
+from resources.pic_url import PicURLResource, PicURLListResource
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -24,11 +25,14 @@ def create_tables():
 # Authorization
 jwt = JWT(app, authenticate, identity)
 
+# Web Site Endpoints
+
 
 # API Endpoints
 api.add_resource(UserRegister, '/user')
-api.add_resource(PicResource, '/api/pic')
-api.add_resource(PicListResource, '/api/pics')
+api.add_resource(PicURLResource, '/api/pic', '/api/pic/<int:_id>')
+api.add_resource(PicURLListResource, '/api/pics')
+api.add_resource(PicResource, '/api/image/<path:file_path>')
 
 if __name__ == '__main__':
     from db import db

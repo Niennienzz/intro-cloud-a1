@@ -108,7 +108,7 @@ venv.bak/
 .mypy_cache/
 
 # Picture storage
-/pics
+/images
 
 # Visual studio code
 .vscode/

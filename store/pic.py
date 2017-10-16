@@ -3,7 +3,7 @@ import os
 
 class PicStore:
 
-    root = 'pics'
+    root = 'images'
     
     def __init__(self, filename, data):
         self.file_path = os.path.join(self.root, filename)
@@ -18,3 +18,11 @@ class PicStore:
         except IOError:
             return '', False
         return self.file_path, True
+
+    def get(self):
+        try:
+            with open(self.file_path, 'rb') as file:
+                self.data = file.read()
+        except IOError:
+            return None, False
+        return self.data, True

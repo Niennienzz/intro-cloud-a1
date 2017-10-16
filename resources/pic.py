@@ -1,44 +1,20 @@
-from flask import request
+from flask import make_response
 from flask_restful import Resource
-from flask_jwt import jwt_required, current_identity
-from store.trans import PicTrans
-from models.pic_url import PicURLModel
+from store.trans import PicStore
 
 
 class PicResource(Resource):
 
-    @jwt_required()
-    def post(self):
-        # read image file
-        f = request.files['file']
+    def get(self, file_path):
+        if not file_path:
+            return {'message': 'no image path provided'}, 400
+        if file_path.startswith('images/'):
+            file_path = file_path[len('images/'):]
+        pic_store = PicStore(file_path, None)
+        data, ok = pic_store.get()
+        if not ok:
+            return {'message': 'no image found'}, 404
+        response = make_response(data)
+        response.headers['content-type'] = 'image/jpeg'
+        return response
 
-        # make transforms of image
-        pic_trans = PicTrans(f.stream.read())
-        (origin, thum, tran1, tran2, tran3) = pic_trans.trans_save()
-
-        # update database
-        pic_url = PicURLModel(current_identity.id, origin, thum, tran1, tran2, tran3)
-        pic_url.save_to_db()
-
-        return {'message': 'file uploaded successfully'}
-
-    @jwt_required()
-    def get(self, _id):
-        pic_url = PicURLModel.find_by_id(_id)
-        if pic_url:
-            return pic_url.json()
-        return {'message': 'image not found'}
-
-    @jwt_required()
-    def delete(self, _id):
-        pic_url = PicURLModel.find_by_id(_id)
-        if pic_url:
-            pic_url.delete_from_db()
-        return {'message': 'image deleted'}
-
-
-class PicListResource(Resource):
-
-    @jwt_required()
-    def get(self):
-        return {'data': list(map(lambda x: x.json(), PicURLModel.find_by_user_id(current_identity.id)))}

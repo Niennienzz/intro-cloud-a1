@@ -14,10 +14,10 @@ class PicURLResource(Resource):
 
         # make transforms of image
         pic_trans = PicTrans(f.stream.read())
-        (origin, thum, tran1, tran2, tran3) = pic_trans.trans_save()
+        origin = pic_trans.trans_save()
 
         # update database
-        pic_url = PicURLModel(current_identity.id, origin, thum, tran1, tran2, tran3)
+        pic_url = PicURLModel(current_identity.id, origin)
         pic_url.save_to_db()
 
         return {'message': 'file uploaded successfully'}
@@ -45,4 +45,4 @@ class PicURLListResource(Resource):
 
     @jwt_required()
     def get(self):
-        return {'data': list(map(lambda x: x.json(), PicURLModel.find_by_user_id(current_identity.id)))}
+        return {'pic_urls': list(map(lambda x: x.json(), PicURLModel.find_by_user_id(current_identity.id)))}

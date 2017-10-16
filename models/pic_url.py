@@ -1,5 +1,7 @@
+from os import path
 from db import db
 from models.user import UserModel
+from const.const import Constants
 
 
 class PicURLModel(db.Model):
@@ -9,20 +11,16 @@ class PicURLModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(UserModel.id))
     origin = db.Column(db.String(100))
-    thumb = db.Column(db.String(100))
-    trans1 = db.Column(db.String(100))
-    trans2 = db.Column(db.String(100))
-    trans3 = db.Column(db.String(100))
 
     user = db.relationship('UserModel', foreign_keys='PicURLModel.user_id', lazy='joined')
 
-    def __init__(self, user_id, origin, thumb, t1, t2, t3):
+    def __init__(self, user_id, origin):
         self.user_id = user_id
         self.origin = origin
-        self.thumb = thumb
-        self.trans1 = t1
-        self.trans2 = t2
-        self.trans3 = t3
+        self.thumb = path.join(path.dirname(self.origin), Constants.THUMB)
+        self.trans1 = path.join(path.dirname(self.origin), Constants.TRANS_1)
+        self.trans2 = path.join(path.dirname(self.origin), Constants.TRANS_2)
+        self.trans3 = path.join(path.dirname(self.origin), Constants.TRANS_3)
 
     def save_to_db(self):
         db.session.add(self)
@@ -45,8 +43,17 @@ class PicURLModel(db.Model):
 
     @classmethod
     def find_by_id(cls, _id):
-        return cls.query.filter_by(id=_id).first()
+        row = cls.query.filter_by(id=_id).first()
+        result = PicURLModel(row.user_id, row.origin)
+        result.id = row.id
+        return result
 
     @classmethod
     def find_by_user_id(cls, _id):
-        return cls.query.filter_by(user_id=_id)
+        results = []
+        rows = cls.query.filter_by(user_id=_id)
+        for row in rows:
+            result = PicURLModel(row.user_id, row.origin)
+            result.id = row.id
+            results.append(result)
+        return results

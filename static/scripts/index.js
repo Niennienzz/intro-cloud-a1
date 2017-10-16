@@ -81,4 +81,3 @@ var welcomePageApp = new Vue({
     }
 
 })
-

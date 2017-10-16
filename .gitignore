@@ -113,5 +113,8 @@ venv.bak/
 # Visual studio code
 .vscode/
 
+# PyCharm
+.idea/*
+
 # Mac
 .DS_Store

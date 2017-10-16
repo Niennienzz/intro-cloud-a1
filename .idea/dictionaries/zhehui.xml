@@ -2,6 +2,7 @@
   <dictionary name="zhehui">
     <words>
       <w>filepath</w>
+      <w>onreadystatechange</w>
       <w>picurl</w>
       <w>pwdsalt</w>
       <w>sqlalchemy</w>

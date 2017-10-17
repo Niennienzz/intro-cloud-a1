@@ -8,6 +8,7 @@ from security import authenticate, identity
 from resources.user import UserRegister
 from resources.pic import PicResource
 from resources.pic_url import PicURLResource, PicURLListResource
+from resources.test import TestUploadResource
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -42,6 +43,10 @@ api.add_resource(UserRegister, '/user')
 api.add_resource(PicURLResource, '/api/pic', '/api/pic/<int:_id>')
 api.add_resource(PicURLListResource, '/api/pics')
 api.add_resource(PicResource, '/api/image/<path:file_path>')
+
+
+# Test API Endpoint
+api.add_resource(TestUploadResource, '/test/FileUpload')
 
 if __name__ == '__main__':
     from db import db

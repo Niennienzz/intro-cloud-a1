@@ -32,6 +32,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
 # API Endpoints
 api.add_resource(UserRegister, '/user')
 api.add_resource(PicURLResource, '/api/pic', '/api/pic/<int:_id>')

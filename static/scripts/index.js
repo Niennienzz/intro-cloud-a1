@@ -8,8 +8,8 @@ var welcomePageApp = new Vue({
         username: '',
         password: '',
         isOnRegisterTab: true,
-        userRegisterURL: '/user',
-        userLoginUserURL: '/auth'
+        userRegisterAPI: '/user',
+        userLoginUserAPI: '/auth'
     },
 
     // methods controlling the view
@@ -28,6 +28,7 @@ var welcomePageApp = new Vue({
         },
 
         checkRegisterForm: function(type) {
+            let self = this;
             let username = document.getElementById('registerUsername').value;
             let password = document.getElementById('registerPassword').value;
             if (username.length == 0 || password.length == 0) {
@@ -35,16 +36,18 @@ var welcomePageApp = new Vue({
                 return;
             }
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", this.userRegisterURL);
+            xhr.open("POST", self.userRegisterAPI);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert("User created, redirecting to home page...");
+                    alert("User created, please log in.");
+                    return;
                 }
                 else if (xhr.readyState == 4 && xhr.status == 400) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     if (jsonResponse.message == "user already exists") {
-                        alert("User already exists, redirecting to home page...");
+                        alert("User already exists, please log in.");
+                        return;
                     }
                     return;
                 }
@@ -54,6 +57,7 @@ var welcomePageApp = new Vue({
         },
 
         checkLoginForm: function() {
+            let self = this;
             let username = document.getElementById('loginUsername').value;
             let password = document.getElementById('loginPassword').value;
             if (username.length == 0 || password.length == 0) {
@@ -61,22 +65,31 @@ var welcomePageApp = new Vue({
                 return;
             }
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", this.userLoginUserURL);
+            xhr.open("POST", self.userLoginUserAPI);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     alert("Redirecting to home page...");
+                    let jsonResponse = JSON.parse(xhr.responseText);
+                    access_token = jsonResponse.access_token;
+                    self.redirectToHome(access_token);
+                    return;
                 }
                 else if (xhr.readyState == 4 && xhr.status == 401) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     if (jsonResponse.description == "Invalid credentials") {
-                        alert("Invalid username or password.");
+                        alert("Invalid username or password, please try again.");
+                        return;
                     }
                     return;
                 }
             }.bind(xhr, this)
             xhr.send(JSON.stringify({username: username, password: password}));
             return;
+        },
+
+        redirectToHome: function(access_token) {
+            window.location.href = "http://127.0.0.1:5000/home?user_access=" + access_token;
         }
     }
 

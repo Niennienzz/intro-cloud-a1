@@ -38,13 +38,13 @@
                 <div class="pure-control-group" style="clear:left;">
                     <br><button class="pure-button pure-button-primary">Upload New</button>
                 </div><br>
-                <div class="pure-control-group" style="clear:left;">
+                <div class="pure-control-group" style="clear:left;"><hr>
                     <div v-for="(url, index) in thumbnailURLList" class="gallery pure-control-group">
-                        <img v-on:click="switchToImageTransformView()" v-bind:src=url>
-                        <div class="desc" v-on:click="switchToImageTransformView()">Image #${index+1}</div>
+                        <img v-on:click="switchToImageTransformView(index)" v-bind:src=url>
+                        <div class="desc" v-on:click="switchToImageTransformView(index)">Image #${index+1}</div>
                     </div>
                 </div><br>
-                <div class="pure-control-group" style="clear:left;">
+                <div class="pure-control-group" style="clear:left;"><hr>
                     <br><button class="pure-button pure-button-primary" v-on:click="redirectToWelcome()">Logout</button><br>
                 </div>
             </div>

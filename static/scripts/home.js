@@ -68,10 +68,10 @@ var homePageApp = new Vue({
             return results;
         },
 
-        switchToImageTransformView() {
+        switchToImageTransformView: function(index) {
             let self = this;
             self.isInGallery = false;
-            let current = self.picUrls.pic_urls[0];
+            let current = self.picUrls.pic_urls[index];
             self.currentTransforms.push(self.imageContentAPI + current.origin_url)
             self.currentTransforms.push(self.imageContentAPI + current.trans1_url)
             self.currentTransforms.push(self.imageContentAPI + current.trans2_url)
@@ -79,7 +79,7 @@ var homePageApp = new Vue({
             return;
         },
 
-        switchToGalleryView() {
+        switchToGalleryView: function() {
             let self = this;
             self.isInGallery = true;
             self.currentTransforms = [];

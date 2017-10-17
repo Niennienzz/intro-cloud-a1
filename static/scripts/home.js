@@ -13,7 +13,9 @@ var homePageApp = new Vue({
         imageContentAPI: '/api/image/',
         accessToken: '',
         picUrls: {},
-        thumbnailURLList: []
+        thumbnailURLList: [],
+        currentTransforms: [],
+        currentTransformDesc: ['Original', 'Flopped', 'Red Shifted', 'Sinusoidal']
     },
 
     // set up on creation values
@@ -66,6 +68,23 @@ var homePageApp = new Vue({
             return results;
         },
 
+        switchToImageTransformView() {
+            let self = this;
+            self.isInGallery = false;
+            let current = self.picUrls.pic_urls[0];
+            self.currentTransforms.push(self.imageContentAPI + current.origin_url)
+            self.currentTransforms.push(self.imageContentAPI + current.trans1_url)
+            self.currentTransforms.push(self.imageContentAPI + current.trans2_url)
+            self.currentTransforms.push(self.imageContentAPI + current.trans3_url)
+            return;
+        },
+
+        switchToGalleryView() {
+            let self = this;
+            self.isInGallery = true;
+            self.currentTransforms = [];
+        },
+
         redirectToWelcome: function() {
             window.location.href = "http://127.0.0.1:5000/";
         }
@@ -80,7 +99,7 @@ var homePageApp = new Vue({
             let results = [];
             let len =  val.pic_urls.length;
             for (let i = 0; i < len; i++) {
-                results.push(val.pic_urls[i].thumb_url);
+                results.push(self.imageContentAPI + val.pic_urls[i].thumb_url);
             }
             self.thumbnailURLList = results;
         }

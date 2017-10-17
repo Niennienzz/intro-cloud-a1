@@ -3,7 +3,7 @@ var welcomePageApp = new Vue({
     // select DOM element for Vue
     el: '#welcomePageApp',
 
-    // data to be keep in client memory
+    // data to be kept in client memory
     data: {
         username: '',
         password: '',
@@ -29,8 +29,8 @@ var welcomePageApp = new Vue({
 
         checkRegisterForm: function(type) {
             let self = this;
-            let username = document.getElementById('registerUsername').value;
-            let password = document.getElementById('registerPassword').value;
+            let username = document.getElementById("registerUsername").value;
+            let password = document.getElementById("registerPassword").value;
             if (username.length == 0 || password.length == 0) {
                 alert("Empty username or password.");
                 return;
@@ -58,8 +58,8 @@ var welcomePageApp = new Vue({
 
         checkLoginForm: function() {
             let self = this;
-            let username = document.getElementById('loginUsername').value;
-            let password = document.getElementById('loginPassword').value;
+            let username = document.getElementById("loginUsername").value;
+            let password = document.getElementById("loginPassword").value;
             if (username.length == 0 || password.length == 0) {
                 alert("Empty username or password.");
                 return;
@@ -91,6 +91,7 @@ var welcomePageApp = new Vue({
         redirectToHome: function(access_token) {
             window.location.href = "http://127.0.0.1:5000/home?user_access=" + access_token;
         }
+
     }
 
 })

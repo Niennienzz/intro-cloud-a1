@@ -10,7 +10,13 @@
 </head>
 <body>
     <div id="homePageApp">
-        <h1>User Home Page</h1>
+        <div v-if="isInGallery">
+            <div v-for="url in thumbnailURLList">
+                ${url}
+            </div>
+        </div>
+        <div v-else>
+        </div>
     </div>
 </body>
 </html>

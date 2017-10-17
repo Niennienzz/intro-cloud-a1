@@ -11,6 +11,7 @@ var homePageApp = new Vue({
         isInGallery: true,
         imageURLListAPI: '/api/pics',
         imageContentAPI: '/api/image/',
+        imageUploadAPI: '/api/pic',
         accessToken: '',
         picUrls: {},
         thumbnailURLList: [],
@@ -86,11 +87,47 @@ var homePageApp = new Vue({
         },
 
         uploadNewImage: function() {
-
+            let self = this;
+            let formElement = document.getElementById("uploadFormInput");
+            console.log(formElement);
+            let formData = new FormData();
+            formData.append("file", formElement.files[0]);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", self.imageUploadAPI)
+            xhr.setRequestHeader("Authorization", "JWT " + self.accessToken);
+            xhr.onreadystatechange = function(vm) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert("Image uploaded successfully.")
+                    self.refreshPicUrls();
+                }
+            }.bind(xhr, this)
+            xhr.send(formData);
+            return;
         },
 
         redirectToWelcome: function() {
             window.location.href = "http://127.0.0.1:5000/";
+        },
+
+        refreshPicUrls: function() {
+            let self = this;
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", self.imageURLListAPI)
+            xhr.setRequestHeader("Authorization", "JWT " + self.accessToken);
+            xhr.onreadystatechange = function(vm) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let jsonResponse = JSON.parse(xhr.responseText);
+                    self.picUrls = jsonResponse;
+                    return;
+                }
+                else if (xhr.readyState == 4 && xhr.status == 401) {
+                    alert("Invalid user access token, please log in again.");
+                    self.redirectToWelcome();
+                    return;
+                }
+            }.bind(xhr, this)
+            xhr.send();
+            return;
         }
 
     },

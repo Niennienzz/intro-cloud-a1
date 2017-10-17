@@ -51,7 +51,7 @@ class PicURLModel(db.Model):
     @classmethod
     def find_by_user_id(cls, _id):
         results = []
-        rows = cls.query.filter_by(user_id=_id)
+        rows = cls.query.filter_by(user_id=_id).order_by(PicURLModel.id)
         for row in rows:
             result = PicURLModel(row.user_id, row.origin)
             result.id = row.id

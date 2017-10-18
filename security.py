@@ -6,7 +6,7 @@ from flask_jwt import authentication_handler, identity_handler
 
 @authentication_handler
 def authenticate(username, password):
-    """Authenticate a user.
+    """User authentication.
     
     This function a Flask-JWT authentication_handler.
     It compares the username and password in database.
@@ -29,7 +29,7 @@ def authenticate(username, password):
         
 @identity_handler
 def identity(payload):
-    """Authenticate a user.
+    """User identity.
     
     This function a Flask-JWT identity_handler.
     It retrieves the user account from payload.

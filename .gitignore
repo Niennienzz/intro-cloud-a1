@@ -118,3 +118,6 @@ venv.bak/
 
 # Mac
 .DS_Store
+
+# Database
+data.db

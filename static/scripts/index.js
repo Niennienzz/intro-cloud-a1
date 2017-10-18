@@ -39,7 +39,7 @@ var welcomePageApp = new Vue({
             xhr.open("POST", self.userRegisterAPI);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function(vm) {
-                if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.readyState == 4 && xhr.status == 201) {
                     alert("User created, please log in.");
                     return;
                 }

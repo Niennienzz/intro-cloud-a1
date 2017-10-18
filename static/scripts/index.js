@@ -89,7 +89,7 @@ var welcomePageApp = new Vue({
         },
 
         redirectToHome: function(access_token) {
-            window.location.href = "/home?user_access=" + access_token;
+            window.location.href = "http://34.203.242.163:5000/home?user_access=" + access_token;
         }
 
     }

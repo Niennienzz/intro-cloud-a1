@@ -106,7 +106,7 @@ var homePageApp = new Vue({
         },
 
         redirectToWelcome: function() {
-            window.location.href = "http://127.0.0.1:5000/";
+            window.location.href = "http://34.203.242.163:5000/";
         },
 
         refreshPicUrls: function() {

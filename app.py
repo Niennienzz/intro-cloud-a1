@@ -36,7 +36,7 @@ def index():
 
 @app.route('/home')
 def home():
-    messages = session['messages']
+    messages = session['token']
     return render_template('home.html', messages=loads(messages))
 
 

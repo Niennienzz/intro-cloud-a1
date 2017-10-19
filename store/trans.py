@@ -12,7 +12,6 @@ class PicTrans:
         Attributes:
             origin_path (str): The filepath to the original image file.
             pic_stores (list of PicStore): PicStore for each transformation.
-
     """
 
     def __init__(self, data):

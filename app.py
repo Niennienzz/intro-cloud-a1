@@ -6,7 +6,7 @@ from flask_jwt import JWT
 from security import authenticate, identity
 from resources.user import UserRegister
 from resources.pic import PicResource
-from resources.pic_url import PicURLResource, PicURLListResource
+from resources.pic_url import PicUploaderResource, PicURLListResource
 from resources.test import TestUploadResource
 
 
@@ -30,7 +30,8 @@ def create_tables():
     db.create_all()
 
 
-# Flask-JWT authorization, which by default register the route '/auth'
+# Flask-JWT authorization, which by default register the route
+# '/auth' for user authentication.
 jwt = JWT(app, authenticate, identity)
 
 
@@ -66,13 +67,16 @@ def logout():
 
 
 # API endpoints, which are self explaining.
-api.add_resource(UserRegister, '/user')
-api.add_resource(PicURLResource, '/api/pic_url', '/api/pic_url/<int:_id>')
+api.add_resource(UserRegister, '/api/user_register')
+api.add_resource(PicUploaderResource, '/api/pic_upload')
 api.add_resource(PicURLListResource, '/api/pic_urls')
 api.add_resource(PicResource, '/api/pic/<path:file_path>')
 
 
-# Test API endpoint, which is self explaining.
+"""
+>>>>> Test API endpoint, which is self explaining.  <<<<<
+>>>>> See /resources/test.py file for more details. <<<<<
+"""
 api.add_resource(TestUploadResource, '/test/FileUpload')
 
 if __name__ == '__main__':

@@ -26,7 +26,6 @@ class PicStore:
 
         This method saves the data to the file_path.
 
-
         Returns:
             (str): The constructed full path including root and filepath.
             (bool): True for success, False otherwise.
@@ -44,7 +43,6 @@ class PicStore:
         """Get file.
 
         This method gets the data from the file_path.
-
 
         Returns:
             (bytes): Actual file data in binary.

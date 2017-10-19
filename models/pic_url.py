@@ -5,6 +5,28 @@ from const.const import Constants
 
 
 class PicURLModel(db.Model):
+    """PicURLModel provides image URL model ORM.
+
+        It saves original image filepath, and associated userID in database.
+        It provides filter-by-ID and filter-by-userID helpers.
+
+        Since the only difference between a image-transformation-filepath
+        and its original-image-filepath is the suffix file name, in the meantime,
+        transformation filenames are constants, only the original image filepath
+        saved is enough to access all transformations.
+
+        Different image sets are distinguished by date and UUID.
+        See '/images' folder under the project directory for more details - after a few images uploaded.
+
+        Schema:
+            CREATE TABLE picurls (
+                id INTEGER NOT NULL,
+                user_id INTEGER,
+                origin VARCHAR(100),
+                PRIMARY KEY (id),
+                FOREIGN KEY(user_id) REFERENCES users (id)
+            )
+    """
 
     __tablename__ = 'picurls'
 

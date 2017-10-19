@@ -5,6 +5,21 @@ from const.const import Constants
 
 
 class UserModel(db.Model):
+    """UserModel provides user data model ORM.
+
+        It saves username, password, and password salt for a user account in database.
+        It provides filter-by-username and filter-by-userID helpers.
+
+        Schema:
+            CREATE TABLE users (
+                id INTEGER NOT NULL,
+                username VARCHAR(64),
+                password VARCHAR(64),
+                pwdsalt VARCHAR(16),
+                PRIMARY KEY (id)
+            )
+    """
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)

@@ -6,6 +6,19 @@ from models.user import UserModel
 
 
 class TestUploadResource(Resource):
+    """TestUploadResource provides test API.
+
+        This API allows tester to create user and upload image at the same time.
+        Also, authentication is not required.
+        Tester can blindly update image to existing account is the username provided already exists.
+
+        Relative URL:   /test/FileUpload
+        Enctype:        multipart/form-data
+        Method:         POST
+        Field #1:       username
+        Field #2:       password
+        Field #3:       image file
+    """
 
     def post(self):
         form = request.form

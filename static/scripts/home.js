@@ -10,7 +10,7 @@ var homePageApp = new Vue({
     data: {
         isInGallery: true,
         userLogoutAPI: '/logout',
-        imageUploadAPI: '/api/pic_url',
+        imageUploadAPI: '/api/pic_upload',
         imageURLListAPI: '/api/pic_urls',
         imageContentAPI: '/api/pic/',
         accessToken: '',

@@ -8,9 +8,9 @@ var welcomePageApp = new Vue({
         username: '',
         password: '',
         isOnRegisterTab: true,
-        userRegisterAPI: '/user',
         userAuthAPI: '/auth',
-        userLoginAPI: '/login'
+        userLoginAPI: '/login',
+        userRegisterAPI: '/api/user_register'
     },
 
     // methods controlling the view

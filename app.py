@@ -9,6 +9,7 @@ from resources.user import UserRegister
 from resources.pic import PicResource
 from resources.pic_url import PicURLResource, PicURLListResource
 from resources.test import TestUploadResource
+from json import loads
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -35,21 +36,23 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    messages = session['messages']
+    return render_template('home.html', messages=loads(messages))
 
 
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
-        session['token'] = request.form['token']
-        return redirect(url_for('index'))
+        token = request.form['token']
+        session['token'] = token
+        return redirect(url_for('.home'))
 
 
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
-    session.pop('username', None)
-    return redirect(url_for('index'))
+    session.pop('token', None)
+    return redirect(url_for('.index'))
 
 
 # API Endpoints

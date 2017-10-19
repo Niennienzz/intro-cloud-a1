@@ -106,7 +106,7 @@ var homePageApp = new Vue({
         },
 
         redirectToWelcome: function() {
-            window.location.href = "http://ec2-54-166-205-112.compute-1.amazonaws.com:5000/";
+            window.location.href = "/";
         },
 
         refreshPicUrls: function() {

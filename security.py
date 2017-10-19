@@ -16,7 +16,7 @@ def authenticate(username, password):
         password (str): Password of an account.
     
     Returns:
-        UserModel: The user account if auth is successful, otherwise None.
+        (UserModel): The user account if auth is successful, otherwise None.
     """
     user = UserModel.find_by_username(username)
     if user:
@@ -35,7 +35,7 @@ def identity(payload):
         payload: The JWT payload.
     
     Returns:
-        UserModel: The user account.
+        (UserModel): The user account.
     """
     user_id = payload['identity']
     return UserModel.find_by_id(user_id)

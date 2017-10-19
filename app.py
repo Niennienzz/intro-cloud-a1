@@ -10,6 +10,12 @@ from resources.pic_url import PicURLResource, PicURLListResource
 from resources.test import TestUploadResource
 
 
+""" Application initialization and configs.
+
+Flask is initialized for this application.
+Flask-SQLAlchemy uses SQLite3 by default, and uses data.db as backing file.
+Flask-JWT tokens have expiration time of one day.
+"""
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -18,16 +24,21 @@ app.secret_key = 'An_App_Secret_Key'
 api = Api(app)
 
 
+# Ensure database tables are created.
 @app.before_first_request
 def create_tables():
     db.create_all()
 
 
-# Authorization
+# Flask-JWT authorization, which by default register the route '/auth'
 jwt = JWT(app, authenticate, identity)
 
 
-# Web Site Endpoints
+# Web site endpoints:
+# '/' for index (welcome page).
+# '/home' for user home page.
+# 'login' for user login.
+# 'logout' for user logout.
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -54,14 +65,14 @@ def logout():
     return json.dumps({'message': 'ok', 'redirect': '/'})
 
 
-# API Endpoints
+# API endpoints, which are self explaining.
 api.add_resource(UserRegister, '/user')
 api.add_resource(PicURLResource, '/api/pic_url', '/api/pic_url/<int:_id>')
 api.add_resource(PicURLListResource, '/api/pic_urls')
 api.add_resource(PicResource, '/api/pic/<path:file_path>')
 
 
-# Test API Endpoint
+# Test API endpoint, which is self explaining.
 api.add_resource(TestUploadResource, '/test/FileUpload')
 
 if __name__ == '__main__':

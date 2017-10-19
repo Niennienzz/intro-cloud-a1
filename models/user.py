@@ -1,7 +1,7 @@
 from random import choice
 from hashlib import sha256
 from db import db
-from models.const import ALPHABET
+from const.const import Constants
 
 
 class UserModel(db.Model):
@@ -14,7 +14,7 @@ class UserModel(db.Model):
 
     def __init__(self, username, password):
         self.username = username
-        self.pwdsalt = ''.join(choice(ALPHABET) for i in range(16))
+        self.pwdsalt = ''.join(choice(Constants.ALPHABET) for i in range(16))
         self.password = sha256((password+self.pwdsalt).encode('utf-8')).hexdigest()
     
     def save_to_db(self):

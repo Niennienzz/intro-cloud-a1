@@ -52,6 +52,7 @@ def home():
     return render_template('home.html', messages=json.dumps({"token": session['token']}))
 
 
+# API endpoints, which are self explaining.
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
@@ -66,7 +67,6 @@ def logout():
     return json.dumps({'message': 'ok', 'redirect': '/'})
 
 
-# API endpoints, which are self explaining.
 api.add_resource(UserRegister, '/api/user_register')
 api.add_resource(PicUploaderResource, '/api/pic_upload')
 api.add_resource(PicURLListResource, '/api/pic_urls')

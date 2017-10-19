@@ -40,9 +40,9 @@ def home():
 
 # API Endpoints
 api.add_resource(UserRegister, '/user')
-api.add_resource(PicURLResource, '/api/pic', '/api/pic/<int:_id>')
-api.add_resource(PicURLListResource, '/api/pics')
-api.add_resource(PicResource, '/api/image/<path:file_path>')
+api.add_resource(PicURLResource, '/api/pic_url', '/api/pic_url/<int:_id>')
+api.add_resource(PicURLListResource, '/api/pic_urls')
+api.add_resource(PicResource, '/api/pic/<path:file_path>')
 
 
 # Test API Endpoint

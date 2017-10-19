@@ -9,9 +9,9 @@ var homePageApp = new Vue({
     // data to be kept in client memory
     data: {
         isInGallery: true,
-        imageURLListAPI: '/api/pics',
-        imageContentAPI: '/api/image/',
-        imageUploadAPI: '/api/pic',
+        imageUploadAPI: '/api/pic_url',
+        imageURLListAPI: '/api/pic_urls',
+        imageContentAPI: '/api/pic/',
         accessToken: '',
         picUrls: {},
         thumbnailURLList: [],

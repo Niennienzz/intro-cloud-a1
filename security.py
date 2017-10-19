@@ -1,10 +1,8 @@
 from hashlib import sha256
 from werkzeug.security import safe_str_cmp
 from models.user import UserModel
-from flask_jwt import authentication_handler, identity_handler
 
 
-@authentication_handler
 def authenticate(username, password):
     """User authentication.
     
@@ -27,7 +25,6 @@ def authenticate(username, password):
             return user
 
         
-@identity_handler
 def identity(payload):
     """User identity.
     

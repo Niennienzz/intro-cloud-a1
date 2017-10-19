@@ -8,9 +8,8 @@ from models.user import UserModel
 class TestUploadResource(Resource):
     """TestUploadResource provides test API.
 
-        This API allows tester to create user and upload image at the same time.
-        Also, authentication is not required.
-        Tester can blindly update image to existing account is the username provided already exists.
+        This API allows tester to create user and upload image at the same time. Also, authentication is not required.
+        Tester can blindly update image to existing account if the username provided already exists.
 
         Relative URL:   /test/FileUpload
         Enctype:        multipart/form-data

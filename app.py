@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from flask import Flask, render_template
+from flask import Flask, session, redirect, url_for, request, render_template
 from flask_restful import Api
 from flask_jwt import JWT
 
@@ -36,6 +36,20 @@ def index():
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        session['token'] = request.form['token']
+        return redirect(url_for('index'))
+
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 
 # API Endpoints

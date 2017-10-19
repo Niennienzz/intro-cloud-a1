@@ -89,7 +89,6 @@ var homePageApp = new Vue({
         uploadNewImage: function() {
             let self = this;
             let formElement = document.getElementById("uploadFormInput");
-            console.log(formElement);
             let formData = new FormData();
             formData.append("file", formElement.files[0]);
             let xhr = new XMLHttpRequest();

@@ -9,7 +9,8 @@ var welcomePageApp = new Vue({
         password: '',
         isOnRegisterTab: true,
         userRegisterAPI: '/user',
-        userLoginUserAPI: '/auth'
+        userAuthAPI: '/auth',
+        userLoginAPI: '/login'
     },
 
     // methods controlling the view
@@ -65,7 +66,7 @@ var welcomePageApp = new Vue({
                 return;
             }
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", self.userLoginUserAPI);
+            xhr.open("POST", self.userAuthAPI);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
@@ -89,7 +90,13 @@ var welcomePageApp = new Vue({
         },
 
         redirectToHome: function(access_token) {
-            window.location.href = "/home?user_access=" + access_token;
+            let self = this;
+            let xhr = new XMLHttpRequest();
+            let formData = new FormData();
+            formData.append("token", access_token)
+            xhr.open("POST", self.userLoginAPI)
+            xhr.send(formData);
+            return
         }
 
     }

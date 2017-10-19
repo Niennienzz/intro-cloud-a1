@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4475078-00a6-4e88-9560-b7a85ca14238" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/home.js" afterPath="$PROJECT_DIR$/static/scripts/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/index.js" afterPath="$PROJECT_DIR$/static/scripts/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,84 +15,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.47194883">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="pic.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/store/pic.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/user.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="18">
-                  <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="trans.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/store/trans.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="468">
-                  <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="pic.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/pic.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#31#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
-                  <caret line="28" column="46" lean-forward="true" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="security.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/security.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="575">
-                  <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+                <state relative-caret-position="1111">
+                  <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#30#0" expanded="true" />
+                    <element signature="e#0#11#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -107,6 +42,16 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/home.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="573">
+                  <caret line="48" column="74" lean-forward="false" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -114,8 +59,8 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/scripts/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="952">
-                  <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+                <state relative-caret-position="1242">
+                  <caret line="69" column="67" lean-forward="false" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
                   <folding />
                 </state>
               </provider>
@@ -124,8 +69,8 @@
           <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/scripts/home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="699">
-                  <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+                <state relative-caret-position="256">
+                  <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -145,7 +90,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>username</find>
-      <find>redirectToHome</find>
       <find>sel</find>
       <find>vars</find>
       <find>userRegisterURL</find>
@@ -155,6 +99,10 @@
       <find>length</find>
       <find>window.location.href</find>
       <find>userLoginUserAPI</find>
+      <find>getURLParams</find>
+      <find>accessToken</find>
+      <find>redirectToHome</find>
+      <find>userLogoutAPI</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,14 +123,14 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/models/pic_url.py" />
         <option value="$PROJECT_DIR$/resources/test.py" />
-        <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/store/pic.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/resources/user.py" />
         <option value="$PROJECT_DIR$/security.py" />
-        <option value="$PROJECT_DIR$/static/scripts/home.js" />
         <option value="$PROJECT_DIR$/static/scripts/index.js" />
+        <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/static/scripts/home.js" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -236,6 +184,11 @@
               <item name="ece1779-a1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ece1779-a1" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ece1779-a1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ece1779-a1" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,14 +290,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pics/YourName.jpg" />
     <entry file="file://$PROJECT_DIR$/pics/2017-10-15/C854C4F384AB4B6C8E487A266E5693D1/trans2.jpg" />
     <entry file="file://$PROJECT_DIR$/pics/2017-10-15/C854C4F384AB4B6C8E487A266E5693D1/trans3.jpg" />
     <entry file="file://$PROJECT_DIR$/pics/2017-10-15/C854C4F384AB4B6C8E487A266E5693D1/trans1.jpg" />
@@ -429,13 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1154">
@@ -447,6 +385,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/py3/lib/python3.6/site-packages/flask/templating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="120" column="4" lean-forward="false" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -491,18 +437,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/pic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/pic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -519,26 +465,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/scripts/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+        <state relative-caret-position="1242">
+          <caret line="69" column="67" lean-forward="false" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="48" column="74" lean-forward="false" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/scripts/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state relative-caret-position="256">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/py3/lib/python3.6/site-packages/flask/globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1044">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        <state relative-caret-position="1111">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

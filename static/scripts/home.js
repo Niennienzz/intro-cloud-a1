@@ -9,6 +9,7 @@ var homePageApp = new Vue({
     // data to be kept in client memory
     data: {
         isInGallery: true,
+        userLogoutAPI: '/logout',
         imageUploadAPI: '/api/pic_url',
         imageURLListAPI: '/api/pic_urls',
         imageContentAPI: '/api/pic/',
@@ -24,7 +25,7 @@ var homePageApp = new Vue({
 
         // set access token
         let self = this;
-        token = self.getURLParams()["user_access"];
+        token = self.getURLParams()["token"];
         if (token.length == 0) {
             alert("Invalid user access token, please log in again.");
             self.redirectToWelcome();
@@ -105,7 +106,18 @@ var homePageApp = new Vue({
         },
 
         redirectToWelcome: function() {
-            window.location.href = "/";
+            let self = this;
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", self.userLogoutAPI);
+            xhr.onreadystatechange = function(vm) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert("You are logged out.");
+                    window.location.href = "/";
+                    return;
+                }
+            }
+            xhr.send();
+            return
         },
 
         refreshPicUrls: function() {

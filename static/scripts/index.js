@@ -92,11 +92,16 @@ var welcomePageApp = new Vue({
             let self = this;
             let xhr = new XMLHttpRequest();
             let formData = new FormData();
-            formData.append("token", access_token)
-            xhr.open("POST", self.userLoginAPI)
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                alert("Redirecting to home page...");
-                return;
+            formData.append("token", access_token);
+            xhr.open("POST", self.userLoginAPI);
+            xhr.onreadystatechange = function(vm) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert("Redirecting to home page..")
+                    let jsonResponse = JSON.parse(xhr.responseText);
+                    console.log(jsonResponse.redirect);
+                    window.location.href = jsonResponse.redirect;
+                    return;
+                }
             }
             xhr.send(formData);
             return

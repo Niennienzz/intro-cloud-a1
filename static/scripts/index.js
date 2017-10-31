@@ -33,7 +33,11 @@ var welcomePageApp = new Vue({
             let username = document.getElementById("registerUsername").value;
             let password = document.getElementById("registerPassword").value;
             if (username.length == 0 || password.length == 0) {
-                alert("Empty username or password.");
+                swal(
+                    "Oops...",
+                    "Empty username or password, please try again.",
+                    "error"
+                );
                 return;
             }
             let xhr = new XMLHttpRequest();
@@ -41,13 +45,21 @@ var welcomePageApp = new Vue({
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 201) {
-                    alert("User created, please log in.");
+                    swal(
+                        "OK!",
+                        "User created, please log in.",
+                        "success"
+                    );
                     return;
                 }
                 else if (xhr.readyState == 4 && xhr.status == 400) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     if (jsonResponse.message == "user already exists") {
-                        alert("User already exists, please log in.");
+                        swal(
+                            "Returning user?",
+                            "User already exists, please log in.",
+                            "question"
+                        );
                         return;
                     }
                     return;
@@ -62,7 +74,11 @@ var welcomePageApp = new Vue({
             let username = document.getElementById("loginUsername").value;
             let password = document.getElementById("loginPassword").value;
             if (username.length == 0 || password.length == 0) {
-                alert("Empty username or password.");
+                swal(
+                    "Oops...",
+                    "Empty username or password, please try again.",
+                    "error"
+                );
                 return;
             }
             let xhr = new XMLHttpRequest();
@@ -78,7 +94,11 @@ var welcomePageApp = new Vue({
                 else if (xhr.readyState == 4 && xhr.status == 401) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     if (jsonResponse.description == "Invalid credentials") {
-                        alert("Invalid username or password, please try again.");
+                        swal(
+                            "Oops...",
+                            "Invalid username or password, please try again.",
+                            "error"
+                        );
                         return;
                     }
                     return;
@@ -96,10 +116,14 @@ var welcomePageApp = new Vue({
             xhr.open("POST", self.userLoginAPI);
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert("Redirecting to home page..")
                     let jsonResponse = JSON.parse(xhr.responseText);
-                    console.log(jsonResponse.redirect);
-                    window.location.href = jsonResponse.redirect;
+                    swal(
+                        "OK!",
+                        "Redirecting to home page...",
+                        "success"
+                    ).then( function() {
+                        window.location.href = jsonResponse.redirect;
+                    });
                     return;
                 }
             }

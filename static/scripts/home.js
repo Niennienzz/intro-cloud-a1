@@ -27,8 +27,13 @@ var homePageApp = new Vue({
         let self = this;
         token = self.getURLParams()["token"];
         if (token.length == 0) {
-            alert("Invalid user access token, please log in again.");
-            self.redirectToWelcome();
+            swal(
+                "Oops...",
+                "Invalid user access token, please log in again.",
+                "error"
+            ).then( function() {
+                window.location.href = "/";
+            });
             return;
         }
         self.accessToken = token;
@@ -44,8 +49,13 @@ var homePageApp = new Vue({
                 return;
             }
             else if (xhr.readyState == 4 && xhr.status == 401) {
-                alert("Invalid user access token, please log in again.");
-                self.redirectToWelcome();
+                swal(
+                    "Oops...",
+                    "Invalid user access token, please log in again.",
+                    "error"
+                ).then( function() {
+                    window.location.href = "/";
+                });
                 return;
             }
         }.bind(xhr, this)
@@ -97,7 +107,11 @@ var homePageApp = new Vue({
             xhr.setRequestHeader("Authorization", "JWT " + self.accessToken);
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert("Image uploaded successfully.")
+                    swal(
+                        "OK!",
+                        "Image uploaded successfully.",
+                        "success"
+                    );
                     self.refreshPicUrls();
                 }
             }.bind(xhr, this)
@@ -111,8 +125,13 @@ var homePageApp = new Vue({
             xhr.open("GET", self.userLogoutAPI);
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert("You are logged out.");
-                    window.location.href = "/";
+                    swal(
+                        "OK!",
+                        "You are logged out.",
+                        "success"
+                    ).then( function() {
+                        window.location.href = "/";
+                    });
                     return;
                 }
             }
@@ -132,8 +151,13 @@ var homePageApp = new Vue({
                     return;
                 }
                 else if (xhr.readyState == 4 && xhr.status == 401) {
-                    alert("Invalid user access token, please log in again.");
-                    self.redirectToWelcome();
+                    swal(
+                        "Oops...",
+                        "Invalid user access token, please log in again.",
+                        "error"
+                    ).then( function() {
+                        window.location.href = "/";
+                    });
                     return;
                 }
             }.bind(xhr, this)

@@ -28,7 +28,7 @@ var welcomePageApp = new Vue({
             document.getElementById("switchToLoginButton").disabled = !this.isOnRegisterTab;
         },
 
-        checkRegisterForm: function(type) {
+        checkRegisterForm: function() {
             let self = this;
             let username = document.getElementById("registerUsername").value;
             let password = document.getElementById("registerPassword").value;
@@ -46,7 +46,7 @@ var welcomePageApp = new Vue({
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 201) {
                     swal(
-                        "OK!",
+                        "Success!",
                         "User created, please log in.",
                         "success"
                     );
@@ -118,7 +118,7 @@ var welcomePageApp = new Vue({
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     swal(
-                        "OK!",
+                        "Success!",
                         "Redirecting to home page...",
                         "success"
                     ).then( function() {

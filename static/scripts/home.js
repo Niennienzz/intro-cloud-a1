@@ -108,11 +108,12 @@ var homePageApp = new Vue({
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     swal(
-                        "OK!",
+                        "Success!",
                         "Image uploaded successfully.",
                         "success"
-                    );
-                    self.refreshPicUrls();
+                    ).then( function() {
+                        self.refreshPicUrls();
+                    });
                 }
             }.bind(xhr, this)
             xhr.send(formData);
@@ -126,8 +127,8 @@ var homePageApp = new Vue({
             xhr.onreadystatechange = function(vm) {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     swal(
-                        "OK!",
-                        "You are logged out.",
+                        "Goodbye!",
+                        "You are now logged out.",
                         "success"
                     ).then( function() {
                         window.location.href = "/";

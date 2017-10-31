@@ -47,7 +47,8 @@ class PicTrans:
         thum_path = path.join(path.dirname(self.origin_path), Constants.THUMB)
         with Image(blob=self.data) as image:
             with image.clone() as img:
-                img.transform('300x300', '200%')
+                img.transform(resize='960x640<>')
+                img.crop(width=500, height=500, gravity='center')
                 self.pic_stores.append(PicStore(thum_path, img.make_blob()))
 
         # make trans1

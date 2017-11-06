@@ -7,7 +7,7 @@ var welcomePageApp = new Vue({
     data: {
         username: '',
         password: '',
-        isOnRegisterTab: true,
+        isOnLoginTab: true,
         userAuthAPI: '/auth',
         userLoginAPI: '/login',
         userRegisterAPI: '/api/user_register'
@@ -17,15 +17,11 @@ var welcomePageApp = new Vue({
     methods: {
 
         switchToRegisterTab: function() {
-            this.isOnRegisterTab = true;
-            document.getElementById("switchToRegisterButton").disabled = this.isOnRegisterTab;
-            document.getElementById("switchToLoginButton").disabled = !this.isOnRegisterTab;
+            this.isOnLoginTab = false;
         },
 
         switchToLoginTab: function() {
-            this.isOnRegisterTab = false;
-            document.getElementById("switchToRegisterButton").disabled = this.isOnRegisterTab;
-            document.getElementById("switchToLoginButton").disabled = !this.isOnRegisterTab;
+            this.isOnLoginTab = true;
         },
 
         checkRegisterForm: function() {
@@ -49,17 +45,21 @@ var welcomePageApp = new Vue({
                         "Success!",
                         "User created, please log in.",
                         "success"
-                    );
+                    ).then( function() {
+                        self.isOnLoginTab = true;
+                    });
                     return;
                 }
                 else if (xhr.readyState == 4 && xhr.status == 400) {
                     let jsonResponse = JSON.parse(xhr.responseText);
                     if (jsonResponse.message == "user already exists") {
                         swal(
-                            "Returning user?",
-                            "User already exists, please log in.",
+                            "User Already Exists.",
+                            "Please log in.",
                             "question"
-                        );
+                        ).then( function() {
+                            self.isOnLoginTab = true;
+                        });
                         return;
                     }
                     return;

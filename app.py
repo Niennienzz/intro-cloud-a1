@@ -13,7 +13,7 @@ from resources.test import TestUploadResource
 """ Application initialization and configs.
 
 Flask is initialized for this application.
-Flask-SQLAlchemy uses SQLite3 by default, and uses data.db as backing file.
+Flask-SQLAlchemy uses MySQL server, and uses 'sys' as backing database.
 Flask-JWT tokens have expiration time of one day.
 """
 app = Flask(__name__)

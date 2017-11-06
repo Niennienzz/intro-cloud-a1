@@ -1,8 +1,8 @@
 import os
 
 
-class PicStore:
-    """PicStore provides filesystem access, which is the only filesystem endpoint in this project.
+class PicLocalStore:
+    """PicLocalStore provides storage access to local filesystem.
 
         Attributes:
             root (str): The default filesystem root, which is relative to the project path.

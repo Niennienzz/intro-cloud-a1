@@ -1,6 +1,6 @@
 from flask import make_response
 from flask_restful import Resource
-from store.trans import PicStore
+from store.s3 import PicS3Store
 
 
 class PicResource(Resource):
@@ -22,7 +22,7 @@ class PicResource(Resource):
             return {'message': 'no image path provided'}, 400
         if file_path.startswith('images/'):
             file_path = file_path[len('images/'):]
-        pic_store = PicStore(file_path, None)
+        pic_store = PicS3Store(file_path, None)
         data, ok = pic_store.get()
         if not ok:
             return {'message': 'no image found'}, 404

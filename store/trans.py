@@ -1,7 +1,7 @@
 import uuid
 import datetime
 from os import path
-from store.pic import PicStore
+from store.s3 import PicS3Store
 from wand.image import Image
 from const.const import Constants
 
@@ -35,7 +35,7 @@ class PicTrans:
                 self.data = converted.make_blob()
 
         # set original picture storage
-        self.pic_stores = [PicStore(self.origin_path, self.data)]
+        self.pic_stores = [PicS3Store(self.origin_path, self.data)]
 
     def trans(self):
         """Make transformations.
@@ -49,21 +49,21 @@ class PicTrans:
             with image.clone() as img:
                 img.transform(resize='960x640<>')
                 img.crop(width=500, height=500, gravity='center')
-                self.pic_stores.append(PicStore(thum_path, img.make_blob()))
+                self.pic_stores.append(PicS3Store(thum_path, img.make_blob()))
 
         # make trans1
         trans1_path = path.join(path.dirname(self.origin_path), Constants.TRANS_1)
         with Image(blob=self.data) as image:
             with image.clone() as img:
                 img.flop()
-                self.pic_stores.append(PicStore(trans1_path, img.make_blob()))
+                self.pic_stores.append(PicS3Store(trans1_path, img.make_blob()))
 
         # make trans2
         trans2_path = path.join(path.dirname(self.origin_path), Constants.TRANS_2)
         with Image(blob=self.data) as image:
             with image.clone() as img:
                 img.evaluate(operator='leftshift', value=1, channel='red')
-                self.pic_stores.append(PicStore(trans2_path, img.make_blob()))
+                self.pic_stores.append(PicS3Store(trans2_path, img.make_blob()))
 
         # make trans3
         trans3_path = path.join(path.dirname(self.origin_path), Constants.TRANS_3)
@@ -74,7 +74,7 @@ class PicTrans:
                 amplitude = 0.2
                 bias = 0.7
                 img.function('sinusoid', [frequency, phase_shift, amplitude, bias])
-                self.pic_stores.append(PicStore(trans3_path, img.make_blob()))
+                self.pic_stores.append(PicS3Store(trans3_path, img.make_blob()))
 
     def save(self):
         """Save files.

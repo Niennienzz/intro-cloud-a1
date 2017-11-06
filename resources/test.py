@@ -14,16 +14,16 @@ class TestUploadResource(Resource):
         Relative URL:   /test/FileUpload
         Enctype:        multipart/form-data
         Method:         POST
-        Field #1:       username
+        Field #1:       userID
         Field #2:       password
-        Field #3:       image file
+        Field #3:       uploadedfile
     """
 
     def post(self):
         form = request.form
-        username = form['field1']
-        password = form['field2']
-        f = request.files['field3']
+        username = form['userID']
+        password = form['password']
+        f = request.files['uploadedfile']
 
         user = UserModel.find_by_username(username)
         if user:

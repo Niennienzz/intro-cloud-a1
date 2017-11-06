@@ -17,7 +17,7 @@ Flask-SQLAlchemy uses SQLite3 by default, and uses data.db as backing file.
 Flask-JWT tokens have expiration time of one day.
 """
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/sys'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)
 app.secret_key = 'An_App_Secret_Key'

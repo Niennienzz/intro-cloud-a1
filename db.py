@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 """ Database instance.
 
 Variable db is a default database instance of Flask-SQLAlchemy.
-It uses SQLite3 as the backing database, and configured (in app.py)
-to save to the data.db file within app directory.
+It is configured to use MySQL as the backing database, and the database name is 'sys'.
+All UserUI workers use a centralized MySQL server.
 """
 db = SQLAlchemy()

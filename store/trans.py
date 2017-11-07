@@ -116,9 +116,9 @@ class PicTrans:
             funcs[1](),
             funcs[2](),
             funcs[3](),
+            funcs[4](),
         ))
         loop.close()
-        return self.origin_path
 
     def trans_save(self):
         """Transform and save.
@@ -130,5 +130,5 @@ class PicTrans:
             (str): The filepath of the original image saved.
         """
         self.trans()
-        origin = self.save()
-        return origin
+        self.save()
+        return self.origin_path

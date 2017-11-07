@@ -21,7 +21,7 @@ class PicLocalStore:
         self.file_path = os.path.join(self.root, filename)
         self.data = data
 
-    def save(self):
+    async def save(self):
         """Save file.
 
         This method saves the data to the file_path.

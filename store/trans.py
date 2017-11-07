@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 import datetime
 from os import path
@@ -11,7 +12,7 @@ class PicTrans:
 
         Attributes:
             origin_path (str): The filepath to the original image file.
-            pic_stores (list of PicStore): PicStore for each transformation.
+            pic_stores (dict of PicS3Store): PicStore for each transformation.
     """
 
     def __init__(self, data):
@@ -35,37 +36,56 @@ class PicTrans:
                 self.data = converted.make_blob()
 
         # set original picture storage
-        self.pic_stores = [PicS3Store(self.origin_path, self.data)]
+        self.pic_stores = {self.origin_path: PicS3Store(self.origin_path, self.data)}
 
     def trans(self):
         """Make transformations.
 
         This method takes the original image data and makes four transformations in memory.
         One of the transformations is a thumbnail of the original image.
+        Each transformation is run in a separate coroutine.
         """
-        # make thumbnail
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(asyncio.gather(
+            self.make_thumbnail(),
+            self.make_trans1(),
+            self.make_trans2(),
+            self.make_trans3(),
+        ))
+        loop.close()
+
+    async def make_thumbnail(self):
+        """Coroutine that makes thumbnail.
+        """
         thum_path = path.join(path.dirname(self.origin_path), Constants.THUMB)
         with Image(blob=self.data) as image:
             with image.clone() as img:
                 img.transform(resize='960x640<>')
                 img.crop(width=500, height=500, gravity='center')
-                self.pic_stores.append(PicS3Store(thum_path, img.make_blob()))
+                self.pic_stores[thum_path] = PicS3Store(thum_path, img.make_blob())
 
-        # make trans1
+    async def make_trans1(self):
+        """Coroutine that makes transformation #1.
+        """
         trans1_path = path.join(path.dirname(self.origin_path), Constants.TRANS_1)
         with Image(blob=self.data) as image:
             with image.clone() as img:
                 img.flop()
-                self.pic_stores.append(PicS3Store(trans1_path, img.make_blob()))
+                self.pic_stores[trans1_path] = PicS3Store(trans1_path, img.make_blob())
 
-        # make trans2
+    async def make_trans2(self):
+        """Coroutine that makes transformation #2.
+        """
         trans2_path = path.join(path.dirname(self.origin_path), Constants.TRANS_2)
         with Image(blob=self.data) as image:
             with image.clone() as img:
                 img.evaluate(operator='leftshift', value=1, channel='red')
-                self.pic_stores.append(PicS3Store(trans2_path, img.make_blob()))
+                self.pic_stores[trans2_path] = PicS3Store(trans2_path, img.make_blob())
 
-        # make trans3
+    async def make_trans3(self):
+        """Coroutine that makes transformation #3.
+        """
         trans3_path = path.join(path.dirname(self.origin_path), Constants.TRANS_3)
         with Image(blob=self.data) as image:
             with image.clone() as img:
@@ -74,25 +94,31 @@ class PicTrans:
                 amplitude = 0.2
                 bias = 0.7
                 img.function('sinusoid', [frequency, phase_shift, amplitude, bias])
-                self.pic_stores.append(PicS3Store(trans3_path, img.make_blob()))
+                self.pic_stores[trans3_path] = PicS3Store(trans3_path, img.make_blob())
 
     def save(self):
         """Save files.
 
         This method saves the original image as well as its four transformations on disk.
-        It does so by calling the underlying PicStore.save() for each image.
+        It does so by calling the underlying PicS3Store.save() for each image.
+        Each save is run in a separate coroutine.
 
         Returns:
-            (list of str): All file paths of saved images.
+            (str): The original path of image.
         """
-        result = []
-        for store in self.pic_stores:
-            filepath, ok = store.save()
-            if ok:
-                result.append(filepath)
-            else:
-                result.append('')
-        return result
+        funcs = []
+        for key, store in self.pic_stores.items():
+            funcs.append(store.save)
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(asyncio.gather(
+            funcs[0](),
+            funcs[1](),
+            funcs[2](),
+            funcs[3](),
+        ))
+        loop.close()
+        return self.origin_path
 
     def trans_save(self):
         """Transform and save.
@@ -104,5 +130,5 @@ class PicTrans:
             (str): The filepath of the original image saved.
         """
         self.trans()
-        (origin, thum, tran1, tran2, tran3) = self.save()
+        origin = self.save()
         return origin

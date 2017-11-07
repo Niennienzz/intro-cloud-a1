@@ -22,7 +22,7 @@ class PicS3Store:
         self.key = key
         self.data = data
 
-    def save(self):
+    async def save(self):
         """Save file.
 
         This method saves the data to AWS S3 with the key.

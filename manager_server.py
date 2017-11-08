@@ -4,11 +4,7 @@ from db import db
 from flask import Flask, session, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt import JWT
-from security import authenticate, identity
-from resources.user import UserRegister
-from resources.pic import PicResource
-from resources.pic_url import PicUploaderResource, PicURLListResource
-from resources.test import TestUploadResource
+from manager_security import authenticate, identity
 
 
 # Application initialization and configs.
@@ -17,7 +13,8 @@ from resources.test import TestUploadResource
 # Flask-JWT tokens have expiration time of one day.
 def create_app():
     ap = Flask(__name__)
-    ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@172.31.35.50/db'
+    # TEST
+    ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@54.227.216.190/db'
     ap.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     ap.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)
     ap.secret_key = 'An_App_Secret_Key'
@@ -41,39 +38,30 @@ jwt = JWT(app, authenticate, identity)
 # '/logout' for user logout.
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('manager_index.html')
 
 
-@app.route('/home')
+@app.route('/manager_home')
 def home():
     if "token" not in session:
-        return redirect(url_for('index'))
-    return render_template('home.html', messages=json.dumps({"token": session['token']}))
+        return redirect(url_for('manager_index'))
+    return render_template('manager_home.html', messages=json.dumps({"token": session['token']}))
 
 
 # API endpoints, which are self explaining.
-@app.route('/login', methods=['POST'])
+@app.route('/manager_login', methods=['POST'])
 def login():
     if request.method == 'POST':
         token = request.form['token']
         session['token'] = token
-        return json.dumps({'message': 'ok', 'redirect': '/home?token='+token})
+        return json.dumps({'message': 'ok', 'redirect': '/manager_home?token='+token})
 
 
-@app.route('/logout')
+@app.route('/manager_logout')
 def logout():
     session.pop('token', None)
     return json.dumps({'message': 'ok', 'redirect': '/'})
 
-
-api.add_resource(UserRegister, '/api/user_register')
-api.add_resource(PicUploaderResource, '/api/pic_upload')
-api.add_resource(PicURLListResource, '/api/pic_urls')
-api.add_resource(PicResource, '/api/pic/<path:file_path>')
-
-# >>>>> Test API endpoint, which is self explaining.  <<<<<
-# >>>>> See /resources/test.py file for more details. <<<<<
-api.add_resource(TestUploadResource, '/test/FileUpload')
 
 if __name__ == '__main__':
     app.run()

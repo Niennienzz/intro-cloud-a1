@@ -5,8 +5,6 @@ var welcomePageApp = new Vue({
 
     // data to be kept in client memory
     data: {
-        username: '',
-        password: '',
         isOnLoginTab: true,
         userAuthAPI: '/auth',
         userLoginAPI: '/login',

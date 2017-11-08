@@ -15,7 +15,6 @@ from resources.test import TestUploadResource
 # Flask is initialized for this application.
 # Flask-SQLAlchemy uses MySQL server, and uses 'sys' as backing database.
 # Flask-JWT tokens have expiration time of one day.
-#
 def create_app():
     ap = Flask(__name__)
     ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/sys'
@@ -78,3 +77,8 @@ api.add_resource(TestUploadResource, '/test/FileUpload')
 
 if __name__ == '__main__':
     app.run()
+
+# Startup Command
+# gunicorn server:app --bind 0.0.0.0:5000 --workers=8 \
+# --worker-class gevent \
+# --access-logfile access.log --error-logfile error.log

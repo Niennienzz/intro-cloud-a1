@@ -44,7 +44,7 @@ def index():
 @app.route('/manager_home')
 def home():
     if "token" not in session:
-        return redirect(url_for('manager_index'))
+        return redirect(url_for('index'))
     return render_template('manager_home.html', messages=json.dumps({"token": session['token']}))
 
 

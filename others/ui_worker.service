@@ -1,0 +1,17 @@
+[Unit]
+Description=ECE1779 UserUI Worker
+After=network.target
+
+[Service]
+PermissionsStartOnly=true
+PIDFile=/run/gunicorn/gunicorn.pid
+User=ubuntu
+WorkingDirectory=/home/ubuntu/ECE-1779/intro-cloud-a1
+ExecStart=/home/ubuntu/anaconda3/envs/py3/bin/gunicorn server:app --bind 0.0.0.0:5000 --workers=8 --worker-class gevent --access-logfile access.log --error-logfile error.log
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+ExecStopPost=/bin/rm -rf /run/gunicorn
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target 

@@ -13,11 +13,11 @@ from resources.test import TestUploadResource
 
 # Application initialization and configs.
 # Flask is initialized for this application.
-# Flask-SQLAlchemy uses MySQL server, and uses 'sys' as backing database.
+# Flask-SQLAlchemy uses MySQL server, and uses 'db' as backing database.
 # Flask-JWT tokens have expiration time of one day.
 def create_app():
     ap = Flask(__name__)
-    ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@54.208.62.163:3306/sys'
+    ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@172.31.35.50/db'
     ap.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     ap.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)
     ap.secret_key = 'An_App_Secret_Key'

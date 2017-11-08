@@ -18,7 +18,7 @@ from resources.test import TestUploadResource
 def create_app():
     ap = Flask(__name__)
     ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@http://ec2-54-208-62-163.' \
-                                           'compute-1.amazonaws.com/sys'
+                                           'compute-1.amazonaws.com:3306/sys'
     ap.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     ap.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)
     ap.secret_key = 'An_App_Secret_Key'

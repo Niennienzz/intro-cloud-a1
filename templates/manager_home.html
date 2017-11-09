@@ -35,6 +35,8 @@
                                 <th>Instance ID</th>
                                 <th>Status</th>
                                 <th>CPU Utilization</th>
+                                <th>Grow</th>
+                                <th>Shrink</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +46,8 @@
                                 <td>${worker.instance}</td>
                                 <td>${worker.status}</td>
                                 <td>${worker.cpu}</td>
+                                <td><button class="pure-button" v-on:click="activateWorker(worker.instance)">Activate</button></td>
+                                <td><button class="pure-button" v-on:click="deactivateWorker(worker.instance)">Deactivate</button></td>
                             </tr>
                         </tbody>
                     </table>

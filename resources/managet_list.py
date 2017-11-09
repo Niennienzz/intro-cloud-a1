@@ -16,7 +16,7 @@ class ManagerList(Resource):
         if current_identity.id != Constants.MANAGER_ID:
             return {'message': 'you are not manager'}, 403
 
-        # change worker pool status
+        # request worker pool status
         results = []
         cw = boto3.client('cloudwatch')
         for key, value in Constants.INSTANCES.items():

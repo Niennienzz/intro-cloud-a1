@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4475078-00a6-4e88-9560-b7a85ca14238" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/managet_list.py" afterPath="$PROJECT_DIR$/resources/managet_list.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/manager_home.js" afterPath="$PROJECT_DIR$/static/scripts/manager_home.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/manager_home.html" afterPath="$PROJECT_DIR$/templates/manager_home.html" />
     </list>
@@ -41,8 +43,8 @@
           <file leaf-file-name="managet_list.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/managet_list.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="702">
-                  <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+                <state relative-caret-position="864">
+                  <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -53,8 +55,8 @@
           <file leaf-file-name="manager_home.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/manager_home.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="972">
-                  <caret line="54" column="68" lean-forward="true" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+                <state relative-caret-position="882">
+                  <caret line="49" column="108" lean-forward="false" selection-start-line="49" selection-start-column="108" selection-end-line="49" selection-end-column="108" />
                   <folding>
                     <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -125,8 +127,8 @@
           <file leaf-file-name="manager_home.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="803">
-                  <caret line="88" column="25" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="25" />
+                <state relative-caret-position="1039">
+                  <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -145,7 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getURLParams</find>
       <find>accessToken</find>
       <find>userLogoutAPI</find>
       <find>redirectToHome</find>
@@ -175,6 +176,7 @@
       <find>region</find>
       <find>idea</find>
       <find>token</find>
+      <find>edit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -218,8 +220,8 @@
         <option value="$PROJECT_DIR$/const/const.py" />
         <option value="$PROJECT_DIR$/manager_server.py" />
         <option value="$PROJECT_DIR$/resources/managet_list.py" />
-        <option value="$PROJECT_DIR$/static/scripts/manager_home.js" />
         <option value="$PROJECT_DIR$/templates/manager_home.html" />
+        <option value="$PROJECT_DIR$/static/scripts/manager_home.js" />
       </list>
     </option>
   </component>
@@ -656,16 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/managet_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/manager_manual.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -694,18 +686,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/managet_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="88" column="25" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="25" />
+        <state relative-caret-position="1039">
+          <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/manager_home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="68" lean-forward="true" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+        <state relative-caret-position="882">
+          <caret line="49" column="108" lean-forward="false" selection-start-line="49" selection-start-column="108" selection-end-line="49" selection-end-column="108" />
           <folding>
             <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
           </folding>

@@ -100,6 +100,44 @@ var managerHomeApp = new Vue({
             $.ajax(settings).done(function (response) {
                 self.workerPool = response;
             });
+        },
+
+        activateWorker: function(instance) {
+            let self = this;
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": self.managerManualAPI,
+                "method": "POST",
+                "headers": {
+                    "content-type": "application/json",
+                    "authorization": "JWT " + self.accessToken
+                },
+                "processData": false,
+                "data": "{\"action\": \"grow\", \"instance\": \"" + instance + "\"}"
+            }
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        },
+
+        deactivateWorker: function(instance) {
+            let self = this;
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": self.managerManualAPI,
+                "method": "POST",
+                "headers": {
+                    "content-type": "application/json",
+                    "authorization": "JWT " + self.accessToken
+                },
+                "processData": false,
+                "data": "{\"action\": \"shrink\", \"instance\": \"" + instance + "\"}"
+            }
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
         }
 
     },

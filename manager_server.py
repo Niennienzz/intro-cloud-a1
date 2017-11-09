@@ -6,6 +6,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 from manager_security import authenticate, identity
 from resources.manager_manual import ManagerManual
+from resources.managet_list import ManagerList
 
 
 # Application initialization and configs.
@@ -64,6 +65,7 @@ def logout():
     return json.dumps({'message': 'ok', 'redirect': '/'})
 
 
+api.add_resource(ManagerList, '/api/manager_list')
 api.add_resource(ManagerManual, '/api/manager_manual')
 
 if __name__ == '__main__':

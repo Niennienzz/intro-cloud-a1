@@ -104,44 +104,93 @@ var managerHomeApp = new Vue({
 
         activateWorker: function(instance) {
             let self = this;
-            let settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": self.managerManualAPI,
-                "method": "POST",
-                "headers": {
-                    "content-type": "application/json",
-                    "authorization": "JWT " + self.accessToken
-                },
-                "processData": false,
-                "data": "{\"action\": \"grow\", \"instance\": \"" + instance + "\"}"
-            }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
+            swal({
+                title: 'Are you sure?',
+                text: "You are about to activate a worker.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Activate!'
+            }).then(function () {
+                let settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: self.managerManualAPI,
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        "authorization": "JWT " + self.accessToken
+                    },
+                    processData: false,
+                    data: '{"action": "grow", "instance": "' + instance + '"}'
+                };
+                $.ajax(settings)
+                    .done(function (response) {
+                        swal(
+                            "Success!",
+                            "Worker activated.",
+                            "success"
+                        )
+                        console.log(response);
+                    })
+                    .fail(function () {
+                        swal(
+                            "Oops...",
+                            "Worker failed to activate.",
+                            "error"
+                        )
+                        console.log(response);
+                    });
+            })
         },
 
         deactivateWorker: function(instance) {
             let self = this;
-            let settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": self.managerManualAPI,
-                "method": "POST",
-                "headers": {
-                    "content-type": "application/json",
-                    "authorization": "JWT " + self.accessToken
-                },
-                "processData": false,
-                "data": "{\"action\": \"shrink\", \"instance\": \"" + instance + "\"}"
-            }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
+            swal({
+                title: 'Are you sure?',
+                text: "You are about to deactivate a worker.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Deactivate!'
+            }).then(function () {
+                let settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: self.managerManualAPI,
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        "authorization": "JWT " + self.accessToken
+                    },
+                    processData: false,
+                    data: '{"action": "shrink", "instance": "' + instance + '"}'
+                };
+                $.ajax(settings)
+                    .done(function (response) {
+                        swal(
+                            "Success!",
+                            "Worker deactivated.",
+                            "success"
+                        )
+                        console.log(response);
+                    })
+                    .fail(function () {
+                        swal(
+                            "Oops...",
+                            "Worker failed to deactivate.",
+                            "error"
+                        )
+                        console.log(response);
+                    });
+            })
         }
 
     },
 
+    // refresh statistics every 5 seconds
     mounted: function () {
         setInterval(function () {
             this.refreshStatistics();

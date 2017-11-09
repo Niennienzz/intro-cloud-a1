@@ -6,7 +6,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 from manager_security import authenticate, identity
 from resources.manager_manual import ManagerManual
-from resources.managet_list import ManagerList
+from resources.manager_list import ManagerList
 
 
 # Application initialization and configs.

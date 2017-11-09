@@ -5,6 +5,7 @@ from flask import Flask, session, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt import JWT
 from manager_security import authenticate, identity
+from resources.manager_manual import ManagerManual
 
 
 # Application initialization and configs.
@@ -62,6 +63,8 @@ def logout():
     session.pop('token', None)
     return json.dumps({'message': 'ok', 'redirect': '/'})
 
+
+api.add_resource(ManagerManual, '/api/manager_manual')
 
 if __name__ == '__main__':
     app.run()

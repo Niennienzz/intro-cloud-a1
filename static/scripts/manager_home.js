@@ -36,11 +36,11 @@ var managerHomeApp = new Vue({
 
         // request worker pool
         let settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": self.managerListAPI,
-            "method": "GET",
-            "headers": {
+            async: true,
+            crossDomain: true,
+            url: self.managerListAPI,
+            method: "GET",
+            headers: {
                 "authorization": "JWT " + self.accessToken
             }
         }
@@ -89,11 +89,11 @@ var managerHomeApp = new Vue({
         refreshStatistics: function() {
             let self = this;
             let settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": self.managerListAPI,
-                "method": "GET",
-                "headers": {
+                async: true,
+                crossDomain: true,
+                url: self.managerListAPI,
+                method: "GET",
+                headers: {
                     "authorization": "JWT " + self.accessToken
                 }
             }

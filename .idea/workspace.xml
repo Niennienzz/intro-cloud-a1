@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4475078-00a6-4e88-9560-b7a85ca14238" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/instance.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/const/const.py" afterPath="$PROJECT_DIR$/const/const.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/manager_list.py" afterPath="$PROJECT_DIR$/resources/manager_list.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/manager_manual.py" afterPath="$PROJECT_DIR$/resources/manager_manual.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/manager_home.js" afterPath="$PROJECT_DIR$/static/scripts/manager_home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/manager_home.html" afterPath="$PROJECT_DIR$/templates/manager_home.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,11 +29,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="const.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="const.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/const/const.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+                <state relative-caret-position="468">
+                  <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -55,7 +51,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="instance.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="instance.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/instance.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="630">
@@ -108,8 +104,8 @@
           <file leaf-file-name="manager_manual.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/manager_manual.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1000">
-                  <caret line="105" column="68" lean-forward="false" selection-start-line="105" selection-start-column="68" selection-end-line="105" selection-end-column="68" />
+                <state relative-caret-position="-577">
+                  <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -130,8 +126,8 @@
           <file leaf-file-name="manager_home.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-55">
-                  <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
+                <state relative-caret-position="2055">
+                  <caret line="148" column="28" lean-forward="true" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -172,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>userLogoutAPI</find>
       <find>redirectToHome</find>
       <find>userLoginAPI</find>
       <find>Alert</find>
@@ -202,6 +197,7 @@
       <find>token</find>
       <find>edit</find>
       <find>.</find>
+      <find>Yes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,11 +241,11 @@
         <option value="$PROJECT_DIR$/resources/manager_rx.py" />
         <option value="$PROJECT_DIR$/resources/managet_list.py" />
         <option value="$PROJECT_DIR$/templates/manager_home.html" />
-        <option value="$PROJECT_DIR$/static/scripts/manager_home.js" />
         <option value="$PROJECT_DIR$/resources/manager_list.py" />
-        <option value="$PROJECT_DIR$/const/const.py" />
         <option value="$PROJECT_DIR$/models/instance.py" />
+        <option value="$PROJECT_DIR$/static/scripts/manager_home.js" />
         <option value="$PROJECT_DIR$/resources/manager_manual.py" />
+        <option value="$PROJECT_DIR$/const/const.py" />
       </list>
     </option>
   </component>
@@ -623,37 +619,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="125" column="44" lean-forward="false" selection-start-line="125" selection-start-column="44" selection-end-line="125" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/const/const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/pic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="44" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/instance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="35" column="43" lean-forward="false" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/manager_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="50" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -677,41 +675,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/manager_list.py">
+    <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="50" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="44" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/instance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="43" lean-forward="false" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+        <state relative-caret-position="2055">
+          <caret line="148" column="28" lean-forward="true" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/manager_manual.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="105" column="68" lean-forward="false" selection-start-line="105" selection-start-column="68" selection-end-line="105" selection-end-column="68" />
+        <state relative-caret-position="-577">
+          <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/const/const.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -46,26 +46,73 @@ class ManagerManual(Resource):
         if action == '' or (action != 'grow' and action != 'shrink'):
             return {'message': 'invalid action (grow/shrink)'}, 400
 
-        # change instance state
-        ec2 = boto3.client('ec2')
+        # create or delete instance
         elb = boto3.client('elb')
+
         if action == 'grow':
-            pass
-            # # try a dry run first to verify permissions
-            # try:
-            #     ec2.start_instances(InstanceIds=[instance], DryRun=True)
-            # except ClientError as e:
-            #     if 'DryRunOperation' not in str(e):
-            #         raise
-            #
-            # # dry run succeeded, run start_instances without dry run
-            # try:
-            #     response = ec2.start_instances(InstanceIds=[instance], DryRun=False)
-            #     print(response)
-            # except ClientError as e:
-            #     print(e)
+            # resource
+            ec2_resource = boto3.resource('ec2')
+
+            # database existing
+            existing = EC2InstanceModel.get_all()
+            count = len(existing)+1
+
+            try:
+                created = ec2_resource.create_instances(
+                    ImageId=Constants.USER_WORKER_IMAGE_ID,
+                    InstanceType='t2.small',
+                    KeyName=Constants.KEY_NAME,
+                    MaxCount=1,
+                    MinCount=1,
+                    Monitoring={
+                        'Enabled': True
+                    },
+                    SecurityGroups=[
+                        Constants.SECURITY_GROUP,
+                    ],
+                    DryRun=False,
+                    InstanceInitiatedShutdownBehavior='terminate',
+                    TagSpecifications=[
+                        {
+                            'ResourceType': 'instance',
+                            'Tags': [
+                                {
+                                    'Key': 'Name',
+                                    'Value': 'A2-UserWorker-%03d' % count
+                                },
+                            ]
+                        },
+                    ]
+                )
+            except IOError:
+                return {'message': 'internal server error'}, 500
+
+            instance = created[0].id
+
+            # add to ELB
+            try:
+                elb.register_instances_with_load_balancer(
+                    LoadBalancerName=Constants.ELB_NAME,
+                    Instances=[
+                        {
+                            'InstanceId': instance
+                        },
+                    ]
+                )
+            except IOError:
+                return {'message': 'internal server error'}, 500
+
+            # add to database
+            try:
+                item = EC2InstanceModel(instance)
+                item.save_to_db()
+            except IOError:
+                return {'message': 'internal server error'}, 500
 
         else:
+            # client
+            ec2_client = boto3.client('ec2')
+
             # parse request JSON 'instance'
             instance = data.get('instance', '').lower()
             instances = []
@@ -76,14 +123,14 @@ class ManagerManual(Resource):
 
             # try a dry run first to verify permissions
             try:
-                ec2.stop_instances(InstanceIds=[instance], DryRun=True)
+                ec2_client.stop_instances(InstanceIds=[instance], DryRun=True)
             except ClientError as e:
                 if 'DryRunOperation' not in str(e):
                     raise
 
             # dry run succeeded, run start_instances without dry run
             try:
-                response = ec2.stop_instances(InstanceIds=[instance], DryRun=False)
+                response = ec2_client.stop_instances(InstanceIds=[instance], DryRun=False)
                 print(response)
             except ClientError as e:
                 print(e)

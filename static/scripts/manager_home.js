@@ -102,7 +102,7 @@ var managerHomeApp = new Vue({
             });
         },
 
-        activateWorker: function(instance) {
+        activateWorker: function() {
             let self = this;
             swal({
                 title: 'Are you sure?',
@@ -123,7 +123,7 @@ var managerHomeApp = new Vue({
                         "authorization": "JWT " + self.accessToken
                     },
                     processData: false,
-                    data: '{"action": "grow", "instance": "' + instance + '"}'
+                    data: '{"action": "grow"}'
                 };
                 $.ajax(settings)
                     .done(function (response) {

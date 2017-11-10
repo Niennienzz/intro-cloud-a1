@@ -27,26 +27,24 @@
                     <h3>- Statistics Automatically Update Every 5 Seconds -</h3>
                 </div>
                 <div>
+                    <button class="pure-button" v-on:click="activateWorker()">Grow: Add Instance</button>
+                </div>
+                <div>
+                    <br>
                     <table class="pure-table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Worker Name</th>
                                 <th>Instance ID</th>
-                                <th>Status</th>
                                 <th>CPU Utilization (%)</th>
-                                <th>Grow</th>
                                 <th>Shrink</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(worker, index) in workerPool">
                                 <td>${index+1}</td>
-                                <td>${worker.name}</td>
                                 <td>${worker.instance}</td>
-                                <td>${worker.status}</td>
                                 <td>${worker.cpu}</td>
-                                <td><button class="pure-button" v-on:click="activateWorker(worker.instance)">Activate</button></td>
                                 <td><button class="pure-button" v-on:click="deactivateWorker(worker.instance)">Deactivate</button></td>
                             </tr>
                         </tbody>

@@ -64,14 +64,18 @@ class PicURLModel(db.Model):
         }
 
     @classmethod
-    def find_by_id(cls, _id):
+    def find_by_id_full(cls, _id):
         row = cls.query.filter_by(id=_id).first()
         result = PicURLModel(row.user_id, row.origin)
         result.id = row.id
         return result
 
     @classmethod
-    def find_by_user_id(cls, _id):
+    def find_by_id(cls, _id):
+        return cls.query.filter_by(id=_id).first()
+
+    @classmethod
+    def find_by_user_id_full(cls, _id):
         results = []
         rows = cls.query.filter_by(user_id=_id).order_by(PicURLModel.id)
         for row in rows:
@@ -79,3 +83,21 @@ class PicURLModel(db.Model):
             result.id = row.id
             results.append(result)
         return results
+
+    @classmethod
+    def find_by_user_id(cls, _id):
+        return cls.query.filter_by(user_id=_id).order_by(PicURLModel.id)
+
+    @classmethod
+    def get_all_full(cls):
+        results = []
+        rows = cls.query.all()
+        for row in rows:
+            result = PicURLModel(row.user_id, row.origin)
+            result.id = row.id
+            results.append(result)
+        return results
+
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()

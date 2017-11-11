@@ -8,7 +8,7 @@ class EC2InstanceModel(db.Model):
         It provides the get-all helper.
 
         Schema:
-            CREATE TABLE users (
+            CREATE TABLE instances (
                 id INTEGER NOT NULL,
                 instance VARCHAR(64),
                 PRIMARY KEY (id)

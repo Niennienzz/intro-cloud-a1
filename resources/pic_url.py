@@ -54,4 +54,4 @@ class PicURLListResource(Resource):
             (JSON): image URL list.
             (int): HTTP status code, 200 for Success.
         """
-        return {'pic_urls': list(map(lambda x: x.json(), PicURLModel.find_by_user_id(current_identity.id)))}
+        return {'pic_urls': list(map(lambda x: x.json(), PicURLModel.find_by_user_id_full(current_identity.id)))}

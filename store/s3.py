@@ -56,3 +56,22 @@ class PicS3Store:
         except botocore.exceptions.ClientError:
             return None, False
         return self.data, True
+
+    async def delete(self):
+        """Delete file.
+
+        This method deletes the data from AWS S3 using key.
+
+        Returns:
+            (str): Key of the stored object.
+            (bool): True for success, False otherwise.
+        """
+        s3 = boto3.client('s3')
+        try:
+            s3.delete_object(
+                Bucket=self.bucket_name,
+                Key=self.key,
+            )
+        except botocore.exceptions.ClientError:
+            return None, False
+        return self.key, True

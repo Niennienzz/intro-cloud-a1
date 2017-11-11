@@ -5,6 +5,7 @@
       <w>filepath</w>
       <w>onreadystatechange</w>
       <w>picurl</w>
+      <w>picurls</w>
       <w>pwdsalt</w>
       <w>sqlalchemy</w>
       <w>sqlite</w>

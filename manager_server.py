@@ -7,6 +7,7 @@ from flask_jwt import JWT
 from manager_security import authenticate, identity
 from resources.manager_manual import ManagerManual
 from resources.manager_list import ManagerList
+from resources.manager_data import ManagerData
 
 
 # Application initialization and configs.
@@ -67,6 +68,7 @@ def logout():
 
 api.add_resource(ManagerList, '/api/manager_list')
 api.add_resource(ManagerManual, '/api/manager_manual')
+api.add_resource(ManagerData, '/api/manager_data')
 
 if __name__ == '__main__':
     app.run()

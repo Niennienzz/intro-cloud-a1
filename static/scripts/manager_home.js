@@ -12,6 +12,7 @@ var managerHomeApp = new Vue({
         managerLogoutAPI: '/manager_logout',
         managerListAPI: '/api/manager_list',
         managerManualAPI: '/api/manager_manual',
+        managerDataAPI: '/api/manager_data',
         accessToken: '',
         workerPool: [],
     },
@@ -64,26 +65,6 @@ var managerHomeApp = new Vue({
                 results[hash[0]] = hash[1];
             }
             return results;
-        },
-
-        redirectToWelcome: function() {
-            let self = this;
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", self.managerLogoutAPI);
-            xhr.onreadystatechange = function(vm) {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    swal(
-                        "Goodbye!",
-                        "You are now logged out.",
-                        "success"
-                    ).then( function() {
-                        window.location.href = "/";
-                    });
-                    return;
-                }
-            }
-            xhr.send();
-            return
         },
 
         refreshStatistics: function() {
@@ -186,7 +167,69 @@ var managerHomeApp = new Vue({
                         console.log(response);
                     });
             })
-        }
+        },
+
+        purgeUserData: function() {
+            let self = this;
+            swal({
+                title: 'Are you sure?',
+                text: "You are about to purge all user data.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Purge!'
+            }).then(function () {
+                let settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: self.managerDataAPI,
+                    method: "DELETE",
+                    headers: {
+                        "authorization": "JWT " + self.accessToken
+                    },
+                    processData: false
+                };
+                $.ajax(settings)
+                    .done(function (response) {
+                        swal(
+                            "Success!",
+                            "User data purged.",
+                            "success"
+                        )
+                        console.log(response);
+                    })
+                    .fail(function () {
+                        swal(
+                            "Oops...",
+                            "Failed to purge user data.",
+                            "error"
+                        )
+                        console.log(response);
+                    });
+            })
+
+        },
+
+        redirectToWelcome: function() {
+            let self = this;
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", self.managerLogoutAPI);
+            xhr.onreadystatechange = function(vm) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    swal(
+                        "Goodbye!",
+                        "You are now logged out.",
+                        "success"
+                    ).then( function() {
+                        window.location.href = "/";
+                    });
+                    return;
+                }
+            }
+            xhr.send();
+            return
+        },
 
     },
 

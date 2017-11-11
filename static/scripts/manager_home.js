@@ -10,7 +10,7 @@ var managerHomeApp = new Vue({
     data: {
         isInGallery: true,
         managerLogoutAPI: '/manager_logout',
-        managerListAPI: '/api/manager_list',
+        managerMetricAPI: '/api/manager_metric',
         managerManualAPI: '/api/manager_manual',
         managerDataAPI: '/api/manager_data',
         accessToken: '',
@@ -39,7 +39,7 @@ var managerHomeApp = new Vue({
         let settings = {
             async: true,
             crossDomain: true,
-            url: self.managerListAPI,
+            url: self.managerMetricAPI,
             method: "GET",
             headers: {
                 "authorization": "JWT " + self.accessToken
@@ -72,7 +72,7 @@ var managerHomeApp = new Vue({
             let settings = {
                 async: true,
                 crossDomain: true,
-                url: self.managerListAPI,
+                url: self.managerMetricAPI,
                 method: "GET",
                 headers: {
                     "authorization": "JWT " + self.accessToken

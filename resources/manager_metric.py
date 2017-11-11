@@ -7,13 +7,12 @@ from flask_jwt import jwt_required, current_identity
 from models.instance import EC2InstanceModel
 
 
-class ManagerList(Resource):
-    """ManagerList provides API for manager to get the worker pool statistics.
+class ManagerMetric(Resource):
+    """ManagerMetric provides API for manager to get the worker pool metrics.
     """
-
     @jwt_required()
     def get(self):
-        """Get worker pool statistics. (GET)
+        """Get worker pool metrics. (GET)
 
         Returns:
             (JSON): Worker pool grow/shrink success or fail message.

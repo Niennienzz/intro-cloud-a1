@@ -199,7 +199,7 @@ var managerHomeApp = new Vue({
                         )
                         console.log(response);
                     })
-                    .fail(function () {
+                    .fail(function (response) {
                         swal(
                             "Oops...",
                             "Failed to purge user data.",

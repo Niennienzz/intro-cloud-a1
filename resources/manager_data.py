@@ -26,22 +26,25 @@ class ManagerData(Resource):
         if current_identity.id != Constants.MANAGER_DATABASE_ID:
             return {'message': 'you are not manager'}, 403
 
-        # get all picture urls
-        bucket_name = 'zhehui-ece1779-bucket'
-        s3 = boto3.resource('s3')
-        bucket = s3.Bucket(bucket_name)
-        bucket.objects.all().delete()
+        try:
+            # get all picture urls
+            bucket_name = 'zhehui-ece1779-bucket'
+            s3 = boto3.resource('s3')
+            bucket = s3.Bucket(bucket_name)
+            bucket.objects.all().delete()
 
-        # delete table entries for picurls
-        pic_url_models = PicURLModel.get_all()
-        for pic_url_model in pic_url_models:
-            pic_url_model.delete_from_db()
+            # delete table entries for picurls
+            pic_url_models = PicURLModel.get_all()
+            for pic_url_model in pic_url_models:
+                pic_url_model.delete_from_db()
 
-        # delete table entries for users, keep manager
-        users = UserModel.get_all()
-        for user in users:
-            if user.id == Constants.MANAGER_DATABASE_ID:
-                continue
-            user.delete_from_db()
+            # delete table entries for users, keep manager
+            users = UserModel.get_all()
+            for user in users:
+                if user.id == Constants.MANAGER_DATABASE_ID:
+                    continue
+                user.delete_from_db()
+        except IOError as e:
+            return {'message': '%s' % e}
 
         return {'message': 'data purged successfully'}

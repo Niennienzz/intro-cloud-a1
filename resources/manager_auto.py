@@ -139,7 +139,7 @@ def scale_down(down_ratio):
         if i == 0 or i < count/down_ratio:
             continue
 
-        instance_id = existing[i].id
+        instance_id = existing[i].instance
         try:
             response = ec2_client.terminate_instances(InstanceIds=[instance_id], DryRun=False)
             print(response)

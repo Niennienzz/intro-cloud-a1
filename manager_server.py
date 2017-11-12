@@ -5,6 +5,7 @@ from flask import Flask, session, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt import JWT
 from manager_security import authenticate, identity
+from resources.manager_auto import start_observing
 from resources.manager_data import ManagerData
 from resources.manager_manual import ManagerManual
 from resources.manager_metric import ManagerMetric
@@ -16,7 +17,7 @@ from resources.manager_metric import ManagerMetric
 # Flask-JWT tokens have expiration time of one day.
 def create_app():
     ap = Flask(__name__)
-    # TEST
+    # TEST: MySQL Server Connection
     ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@54.227.216.190/db'
     ap.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     ap.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)
@@ -24,6 +25,7 @@ def create_app():
     db.init_app(ap)
     with ap.app_context():
         db.create_all()
+    start_observing(ap.app_context())
     return ap
 
 

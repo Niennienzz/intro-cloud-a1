@@ -49,6 +49,7 @@ class ManagerManual(Resource):
         # create or delete instance
         elb = boto3.client('elb')
 
+        # create and start an EC2 instance from AMI
         if action == 'grow':
             # resource
             ec2_resource = boto3.resource('ec2')
@@ -109,6 +110,7 @@ class ManagerManual(Resource):
             except IOError:
                 return {'message': 'internal server error'}, 500
 
+        # stop and terminate an instance
         else:
             # client
             ec2_client = boto3.client('ec2')
@@ -123,14 +125,14 @@ class ManagerManual(Resource):
 
             # try a dry run first to verify permissions
             try:
-                ec2_client.stop_instances(InstanceIds=[instance], DryRun=True)
+                ec2_client.terminate_instances(InstanceIds=[instance], DryRun=True)
             except ClientError as e:
                 if 'DryRunOperation' not in str(e):
                     raise
 
-            # dry run succeeded, run start_instances without dry run
+            # dry run succeeded, run terminate_instances for real
             try:
-                response = ec2_client.stop_instances(InstanceIds=[instance], DryRun=False)
+                response = ec2_client.terminate_instances(InstanceIds=[instance], DryRun=False)
                 print(response)
             except ClientError as e:
                 print(e)

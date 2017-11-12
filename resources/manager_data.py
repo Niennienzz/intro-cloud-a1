@@ -45,6 +45,6 @@ class ManagerData(Resource):
                     continue
                 user.delete_from_db()
         except IOError as e:
-            return {'message': '%s' % e}
+            return {'message': '%s' % e}, 500
 
         return {'message': 'data purged successfully'}

@@ -43,12 +43,16 @@ def start_observing(context):
         for cpu in results:
             cpu_sum += cpu
 
-        average = cpu_sum/len(results)
-        print('[Manager AutoScaling - Average CPU Utilization: %f]' % average)
+        average = 0
+        if len(results) != 0:
+            average = cpu_sum/len(results)
+            print('[Manager AutoScaling - Average CPU Utilization: %f]' % average)
+        else:
+            print('[Manager AutoScaling - Average CPU Utilization: 0]')
 
         if average > 20:
             scale_up(2)
-        elif average < 5:
+        elif 1 < average < 5:
             scale_down(4)
         else:
             print('[Manager AutoScaling - Balanced]')

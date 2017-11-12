@@ -136,7 +136,7 @@ def scale_down(down_ratio):
     count = len(existing)
 
     if count == 1:
-        print('[Manager AutoScaling - Scaling Down Not Performed (Keep One Instance)]')
+        print('[Manager AutoScaling - Balanced (Keep One Instance)]')
         return
 
     for i in range(count):

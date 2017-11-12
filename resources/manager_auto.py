@@ -48,7 +48,7 @@ def start_observing(context):
 
         if average > 20:
             scale_up(2)
-        elif average < 10:
+        elif average < 5:
             scale_down(4)
         else:
             print('[Manager AutoScaling - Balanced]')

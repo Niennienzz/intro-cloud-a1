@@ -42,7 +42,7 @@ def start_observing(context):
             cpu_sum += cpu
 
         average = cpu_sum/len(results)
-        print("[Manager AutoScaling - Average CPU Utilization: %s]" % average)
+        print("[Manager AutoScaling - Average CPU Utilization: %d]" % average)
 
         if average > 70:
             scale_up()

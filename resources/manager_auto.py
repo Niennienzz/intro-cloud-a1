@@ -42,5 +42,22 @@ def start_observing(context):
             cpu_sum += cpu
 
         average = cpu_sum/len(results)
-        print("[Manager Observing - Average CPU Utilization: %s]" % average)
+        print("[Manager AutoScaling - Average CPU Utilization: %s]" % average)
+
+        if average > 70:
+            scale_up()
+        elif average < 10:
+            scale_down()
+        else:
+            pass
+
+        # setup next iteration monitoring
         threading.Timer(5, start_observing, [context]).start()
+
+
+def scale_up():
+    print("[Manager AutoScaling - Scaling Up]")
+
+
+def scale_down():
+    print("[Manager AutoScaling - Scaling Down]")

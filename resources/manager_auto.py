@@ -135,8 +135,12 @@ def scale_down(down_ratio):
     existing = EC2InstanceModel.get_all()
     count = len(existing)
 
+    if count == 1:
+        print('[Manager AutoScaling - Scaling Down Not Performed (Keep One Instance)]')
+        return
+
     for i in range(count):
-        if i == 0 or i < count/down_ratio:
+        if i < count/down_ratio:
             continue
 
         instance_id = existing[i].instance

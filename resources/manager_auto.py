@@ -5,9 +5,72 @@ import threading
 from botocore.exceptions import ClientError
 from const.const import Constants
 from models.instance import EC2InstanceModel
+from flask_restful import Resource, reqparse
+from flask_jwt import jwt_required, current_identity
+
+
+auto_scale_parameters = {
+    'cpu_threshold_grow': 70,
+    'cpu_threshold_shrink': 20,
+    'ratio_grow': 2,
+    'ratio_shrink': 4
+}
+
+
+class UserRegister(Resource):
+    """UserRegister provides manager auto-scale configuration API.
+
+        Attributes:
+            parser (RequestParser): The Flask-RESTful request parser.
+            It parses parameters from the JSON payload for auto-scale configuration.
+            Values must be integer.
+    """
+    parser = reqparse.RequestParser()
+    parser.add_argument(
+        'cpu_threshold_grow',
+        type=int,
+        required=True
+    )
+
+    parser.add_argument(
+        'cpu_threshold_shrink',
+        type=int,
+        required=True
+    )
+
+    parser.add_argument(
+        'ratio_grow',
+        type=int,
+        required=True
+    )
+
+    parser.add_argument(
+        'ratio_shrink',
+        type=int,
+        required=True
+    )
+
+    @jwt_required()
+    def post(self):
+        """Configure auto-scale parameters. (POST)
+
+        Returns:
+            (JSON): Configuration success or fail message.
+            (int): HTTP status code.
+        """
+        # special treat for manager
+        if current_identity.id != Constants.MANAGER_DATABASE_ID:
+            return {'message': 'you are not manager'}, 403
+        data = UserRegister.parser.parse_args()
+        auto_scale_parameters['cpu_threshold_grow'] = data['cpu_threshold_grow']
+        auto_scale_parameters['cpu_threshold_shrink'] = data['cpu_threshold_shrink']
+        auto_scale_parameters['ratio_grow'] = data['ratio_grow']
+        auto_scale_parameters['ratio_shrink'] = data['ratio_shrink']
+        return {'message': 'auto-scale configuration updated successfully'}
 
 
 def start_observing(context):
+    print('[Manager AutoScaling Parameters]', auto_scale_parameters)
     with context:
         # request worker pool status
         results = []
@@ -48,12 +111,12 @@ def start_observing(context):
             average = cpu_sum/len(results)
             print('[Manager AutoScaling - Average CPU Utilization: %f]' % average)
         else:
-            print('[Manager AutoScaling - Average CPU Utilization: 0]')
+            print('[Manager AutoScaling - Waiting For More CPU Metrics]')
 
-        if average > 70:
-            scale_up(2)
-        elif 1 < average < 20:
-            scale_down(4)
+        if len(results) != 0 and average > auto_scale_parameters['cpu_threshold_grow']:
+            scale_up(auto_scale_parameters['ratio_grow'])
+        elif len(results) != 0 and average < auto_scale_parameters['cpu_threshold_shrink']:
+            scale_down(auto_scale_parameters['ratio_shrink'])
         else:
             print('[Manager AutoScaling - Balanced]')
 

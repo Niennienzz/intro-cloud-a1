@@ -209,7 +209,7 @@ var managerHomeApp = new Vue({
                     console.log(response);
                 })
                 .fail(function (response) {
-                    let jsonResponse = JSON.parse(responseText);
+                    let jsonResponse = JSON.parse(response.responseText);
                     swal(
                         "Oops...",
                         "AutoScale config: " + jsonResponse.message,

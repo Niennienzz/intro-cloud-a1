@@ -13,7 +13,7 @@ class Constants:
 
     # Constants for AWS related services.
     MANAGER_DATABASE_ID = 1
-    USER_WORKER_IMAGE_ID = 'ami-fa6cd180'
+    USER_WORKER_IMAGE_ID = 'ami-a86ed4d2'
     SECURITY_GROUP = 'ECE-1779'
     KEY_NAME = 'ece1779_p1'
     ELB_NAME = 'ECE-1779-LoadBalancer'

@@ -59,40 +59,39 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <hr>
-                <form id="managerLoginForm" class="pure-form pure-form-aligned">
-                    <fieldset>
-                        <div class="pure-control-group">
-                            <label for="autoScaleCPUThresholdGrow">Grow - CPU Threshold</label>
-                            <input id="autoScaleCPUThresholdGrow" type="text" placeholder="70">
-                            <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="autoScaleCPUThresholdShrink">Shrink - CPU Threshold</label>
-                            <input id="autoScaleCPUThresholdShrink" type="password" placeholder="20">
-                            <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="autoScaleRatioGrow">Grow - Ratio</label>
-                            <input id="autoScaleRatioGrow" type="text" placeholder="2">
-                            <span class="pure-form-message-inline">(Integer)</span>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="autoScaleRatioShrink">Shrink - Ratio</label>
-                            <input id="autoScaleRatioShrink" type="text" placeholder="4">
-                            <span class="pure-form-message-inline">(Integer)</span>
-                        </div>
-                        <div class="pure-controls">
-                            <input id="managerAutoScaleConfigButton" type="button" value="Update AutoScale Config" class="pure-button pure-button-primary" v-on:click="checkAutoScaleConfigForm()">
-                        </div>
-                    </fieldset>
-                </form>
-                <hr>
+                </div><hr>
+                <div>
+                    <form id="managerLoginForm" class="pure-form pure-form-aligned">
+                        <fieldset>
+                            <div class="pure-control-group">
+                                <label for="autoScaleCPUThresholdGrow">Grow - CPU Threshold</label>
+                                <input id="autoScaleCPUThresholdGrow" type="text" placeholder="70">
+                                <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="autoScaleCPUThresholdShrink">Shrink - CPU Threshold</label>
+                                <input id="autoScaleCPUThresholdShrink" type="password" placeholder="20">
+                                <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="autoScaleRatioGrow">Grow - Ratio</label>
+                                <input id="autoScaleRatioGrow" type="text" placeholder="2">
+                                <span class="pure-form-message-inline">(Integer)</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="autoScaleRatioShrink">Shrink - Ratio</label>
+                                <input id="autoScaleRatioShrink" type="text" placeholder="4">
+                                <span class="pure-form-message-inline">(Integer)</span>
+                            </div>
+                            <div class="pure-controls">
+                                <input id="managerAutoScaleConfigButton" type="button" value="Update AutoScale Config" class="pure-button pure-button-primary" v-on:click="checkAutoScaleConfigForm()">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div><hr>
                 <div class="pure-control-group" style="clear:left;">
                     <br><button class="button-error pure-button" v-on:click="purgeUserData()">Purge User Data</button><br>
-                </div>
-                <hr>
+                </div><hr>
                 <div class="pure-control-group" style="clear:left;">
                     <br><button class="pure-button pure-button-primary" v-on:click="redirectToWelcome()">Logout</button><br>
                 </div>

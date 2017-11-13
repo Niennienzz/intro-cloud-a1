@@ -70,6 +70,7 @@ class ManagerAutoScale(Resource):
 
 
 def start_observing(context):
+    print('==================================================')
     print('[Manager AutoScaling Parameters]', auto_scale_parameters)
     with context:
         # request worker pool status
@@ -93,7 +94,8 @@ def start_observing(context):
                 )
                 data_points = response.get('Datapoints', [])
                 if len(data_points) == 0:
-                    continue
+                    cpu = 0
+                    results.append(cpu)
                 else:
                     data_point = data_points[len(data_points)-1]
                     cpu = data_point.get('Average', '')
@@ -121,7 +123,8 @@ def start_observing(context):
             print('[Manager AutoScaling - Balanced]')
 
         # setup next iteration monitoring
-        threading.Timer(5, start_observing, [context]).start()
+        print('==================================================')
+        threading.Timer(10, start_observing, [context]).start()
 
 
 def scale_up(up_ratio):

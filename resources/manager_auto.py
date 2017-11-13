@@ -30,17 +30,16 @@ def start_observing(context):
                 )
                 data_points = response.get('Datapoints', [])
                 if len(data_points) == 0:
-                    cpu = 0
+                    continue
                 else:
                     data_point = data_points[len(data_points)-1]
                     cpu = data_point.get('Average', '')
-                results.append(cpu)
+                    results.append(cpu)
         except botocore.exceptions.ClientError as e:
             print(e)
-            return [], 500
 
         cpu_sum = 0
-        for key, cpu in results:
+        for key, cpu in enumerate(results):
             print('[Manager AutoScaling - Worker #%d: | CPU Utilization: %f]' % (key, cpu))
             cpu_sum += cpu
 

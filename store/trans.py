@@ -60,7 +60,7 @@ class PicTrans:
         """
         thum_path = path.join(path.dirname(self.origin_path), Constants.THUMB)
         with Image(blob=self.data) as image:
-            x, y = image.size()
+            x, y = image.size
             if x > 300 and y > 300:
                 with image.clone() as img:
                     img.crop(width=300, height=300, gravity='center')

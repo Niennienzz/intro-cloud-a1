@@ -133,7 +133,7 @@ def start_observing(context):
 
         if len(results) != 0 and average > auto_scale_parameters['cpu_threshold_grow']:
             scale_up(auto_scale_parameters['ratio_grow'])
-        elif len(results) != 0 and 5 < average < auto_scale_parameters['cpu_threshold_shrink']:
+        elif len(results) != 0 and average < auto_scale_parameters['cpu_threshold_shrink']:
             scale_down(auto_scale_parameters['ratio_shrink'])
         else:
             print('[Manager AutoScaling - Balanced]')

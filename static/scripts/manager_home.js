@@ -185,37 +185,37 @@ var managerHomeApp = new Vue({
                 return;
             }
             let settings = {
-                    async: true,
-                    crossDomain: true,
-                    url: self.managerAutoScaleConfigAPI,
-                    method: "DELETE",
-                    headers: {
-                        "authorization": "JWT " + self.accessToken
-                    },
-                    processData: false
-                    data: { "cpu_threshold_grow": autoScaleCPUThresholdGrow,
-                            "cpu_threshold_shrink": autoScaleCPUThresholdShrink,
-                            "ratio_grow": autoScaleRatioGrow,
-                            "ratio_shrink": autoScaleRatioShrink
-                          }
-                };
-                $.ajax(settings)
-                    .done(function (response) {
-                        swal(
-                            "Success!",
-                            "AutoScale config updated.",
-                            "success"
-                        )
-                        console.log(response);
-                    })
-                    .fail(function (response) {
-                        swal(
-                            "Oops...",
-                            "AutoScale config: " + response.message,
-                            "error"
-                        )
-                        console.log(response);
-                    });
+                async: true,
+                crossDomain: true,
+                url: self.managerAutoScaleConfigAPI,
+                method: "DELETE",
+                headers: {
+                    "authorization": "JWT " + self.accessToken
+                },
+                processData: false,
+                data: { "cpu_threshold_grow": autoScaleCPUThresholdGrow,
+                        "cpu_threshold_shrink": autoScaleCPUThresholdShrink,
+                        "ratio_grow": autoScaleRatioGrow,
+                        "ratio_shrink": autoScaleRatioShrink
+                }
+            };
+            $.ajax(settings)
+                .done(function (response) {
+                    swal(
+                        "Success!",
+                        "AutoScale config updated.",
+                        "success"
+                    )
+                    console.log(response);
+                })
+                .fail(function (response) {
+                    swal(
+                        "Oops...",
+                        "AutoScale config: " + response.message,
+                        "error"
+                    )
+                    console.log(response);
+                });
         },
 
         purgeUserData: function() {

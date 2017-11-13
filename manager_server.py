@@ -5,7 +5,7 @@ from flask import Flask, session, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt import JWT
 from manager_security import authenticate, identity
-from resources.manager_auto import start_observing
+from resources.manager_auto import ManagerAutoScale, start_observing
 from resources.manager_data import ManagerData
 from resources.manager_manual import ManagerManual
 from resources.manager_metric import ManagerMetric
@@ -71,6 +71,7 @@ def logout():
 api.add_resource(ManagerData, '/api/manager_data')
 api.add_resource(ManagerManual, '/api/manager_manual')
 api.add_resource(ManagerMetric, '/api/manager_metric')
+api.add_resource(ManagerAutoScale, '/api/manager_auto_scale_config')
 
 if __name__ == '__main__':
     app.run()

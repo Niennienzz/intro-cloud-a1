@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4475078-00a6-4e88-9560-b7a85ca14238" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager_server.py" afterPath="$PROJECT_DIR$/manager_server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/manager_auto.py" afterPath="$PROJECT_DIR$/resources/manager_auto.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +16,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.44231647">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="manager_server.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="manager_server.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/manager_server.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="20" column="87" lean-forward="false" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
+                <state relative-caret-position="1188">
+                  <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -57,11 +58,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="manager_auto.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="manager_auto.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/manager_auto.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1224">
-                  <caret line="68" column="73" lean-forward="false" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="73" />
+                <state relative-caret-position="318">
+                  <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -221,10 +222,10 @@
         <option value="$PROJECT_DIR$/resources/manager_list.py" />
         <option value="$PROJECT_DIR$/resources/manager_metric.py" />
         <option value="$PROJECT_DIR$/resources/manager_manual.py" />
-        <option value="$PROJECT_DIR$/manager_server.py" />
         <option value="$PROJECT_DIR$/static/scripts/manager_home.js" />
         <option value="$PROJECT_DIR$/resources/manager_data.py" />
         <option value="$PROJECT_DIR$/resources/manager_auto.py" />
+        <option value="$PROJECT_DIR$/manager_server.py" />
       </list>
     </option>
   </component>
@@ -602,16 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="20" column="87" lean-forward="false" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-138">
@@ -632,14 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3618">
-          <caret line="201" column="44" lean-forward="false" selection-start-line="201" selection-start-column="44" selection-end-line="201" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -694,12 +677,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/scripts/manager_home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3618">
+          <caret line="201" column="44" lean-forward="false" selection-start-line="201" selection-start-column="44" selection-end-line="201" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/manager_auto.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="68" column="73" lean-forward="false" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="73" />
+        <state relative-caret-position="318">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

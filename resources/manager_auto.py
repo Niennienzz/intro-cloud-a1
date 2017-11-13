@@ -17,8 +17,8 @@ auto_scale_parameters = {
 }
 
 
-class UserRegister(Resource):
-    """UserRegister provides manager auto-scale configuration API.
+class ManagerAutoScale(Resource):
+    """ManagerAutoScale provides manager auto-scale configuration API.
 
         Attributes:
             parser (RequestParser): The Flask-RESTful request parser.
@@ -61,7 +61,7 @@ class UserRegister(Resource):
         # special treat for manager
         if current_identity.id != Constants.MANAGER_DATABASE_ID:
             return {'message': 'you are not manager'}, 403
-        data = UserRegister.parser.parse_args()
+        data = ManagerAutoScale.parser.parse_args()
         auto_scale_parameters['cpu_threshold_grow'] = data['cpu_threshold_grow']
         auto_scale_parameters['cpu_threshold_shrink'] = data['cpu_threshold_shrink']
         auto_scale_parameters['ratio_grow'] = data['ratio_grow']

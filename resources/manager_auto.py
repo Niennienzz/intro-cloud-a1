@@ -10,8 +10,8 @@ from flask_jwt import jwt_required, current_identity
 
 
 auto_scale_parameters = {
-    'cpu_threshold_grow': 70,
-    'cpu_threshold_shrink': 20,
+    'cpu_threshold_grow': 80,
+    'cpu_threshold_shrink': 15,
     'ratio_grow': 2,
     'ratio_shrink': 4
 }

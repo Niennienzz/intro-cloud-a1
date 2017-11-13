@@ -62,6 +62,16 @@ class ManagerAutoScale(Resource):
         if current_identity.id != Constants.MANAGER_DATABASE_ID:
             return {'message': 'you are not manager'}, 403
         data = ManagerAutoScale.parser.parse_args()
+
+        # validate data
+        if not (5 < data['cpu_threshold_grow'] < 90):
+            return {'message': 'invalid cpu_threshold_grow (10 to 90)'}, 404
+        if not (5 < data['cpu_threshold_shrink'] < 90):
+            return {'message': 'invalid cpu_threshold_shrink (10 to 90)'}, 404
+        if data['cpu_threshold_grow'] < data['cpu_threshold_shrink']:
+            return {'message': 'cpu_threshold_grow must be greater than cpu_threshold_shrink'}, 404
+
+        # update auto scale parameters
         auto_scale_parameters['cpu_threshold_grow'] = data['cpu_threshold_grow']
         auto_scale_parameters['cpu_threshold_shrink'] = data['cpu_threshold_shrink']
         auto_scale_parameters['ratio_grow'] = data['ratio_grow']
@@ -116,14 +126,14 @@ def start_observing(context):
             print('[Manager AutoScaling - Average CPU Utilization: %f]' % average)
 
         # skip invalid metrics
-        if average < 1:
+        if average == 0:
             print('[Manager AutoScaling - Waiting For More CPU Metrics]')
             threading.Timer(10, start_observing, [context]).start()
             return
 
         if len(results) != 0 and average > auto_scale_parameters['cpu_threshold_grow']:
             scale_up(auto_scale_parameters['ratio_grow'])
-        elif len(results) != 0 and auto_scale_parameters['cpu_threshold_shrink']:
+        elif len(results) != 0 and 5 < average < auto_scale_parameters['cpu_threshold_shrink']:
             scale_down(auto_scale_parameters['ratio_shrink'])
         else:
             print('[Manager AutoScaling - Balanced]')

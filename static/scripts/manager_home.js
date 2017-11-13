@@ -13,6 +13,7 @@ var managerHomeApp = new Vue({
         managerMetricAPI: '/api/manager_metric',
         managerManualAPI: '/api/manager_manual',
         managerDataAPI: '/api/manager_data',
+        managerAutoScaleConfigAPI: '/api/manager_auto_scale_config',
         accessToken: '',
         workerPool: [],
     },
@@ -167,6 +168,54 @@ var managerHomeApp = new Vue({
                         console.log(response);
                     });
             })
+        },
+
+        checkAutoScaleConfigForm: function() {
+            let self = this;
+            let autoScaleCPUThresholdGrow = document.getElementById("autoScaleCPUThresholdGrow").value;
+            let autoScaleCPUThresholdShrink = document.getElementById("autoScaleCPUThresholdShrink").value;
+            let autoScaleRatioGrow = document.getElementById("autoScaleRatioGrow").value;
+            let autoScaleRatioShrink = document.getElementById("autoScaleRatioShrink").value;
+            if (autoScaleCPUThresholdGrow.length == 0 || autoScaleCPUThresholdShrink.length == 0 || autoScaleRatioGrow.length == 0 || autoScaleRatioShrink.length == 0) {
+                swal(
+                    "Oops...",
+                    "Empty parameter(s), please try again.",
+                    "error"
+                );
+                return;
+            }
+            let settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: self.managerAutoScaleConfigAPI,
+                    method: "DELETE",
+                    headers: {
+                        "authorization": "JWT " + self.accessToken
+                    },
+                    processData: false
+                    data: { "cpu_threshold_grow": autoScaleCPUThresholdGrow,
+                            "cpu_threshold_shrink": autoScaleCPUThresholdShrink,
+                            "ratio_grow": autoScaleRatioGrow,
+                            "ratio_shrink": autoScaleRatioShrink
+                          }
+                };
+                $.ajax(settings)
+                    .done(function (response) {
+                        swal(
+                            "Success!",
+                            "AutoScale config updated.",
+                            "success"
+                        )
+                        console.log(response);
+                    })
+                    .fail(function (response) {
+                        swal(
+                            "Oops...",
+                            "AutoScale config: " + response.message,
+                            "error"
+                        )
+                        console.log(response);
+                    });
         },
 
         purgeUserData: function() {

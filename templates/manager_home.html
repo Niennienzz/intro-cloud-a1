@@ -34,7 +34,8 @@
                     <h1>Welcome to Cloud Photo Gallery Manager Console</h1>
                 </div>
                 <div>
-                    <h3>- Statistics Automatically Update Every 5 Seconds -</h3>
+                    <h3>#1 Instances Monitoring</h3>
+                    <h4>- Statistics Automatically Update Every 5 Seconds</h4>
                 </div>
                 <div>
                     <button class="pure-button" v-on:click="activateWorker()">Grow: Add Instance</button>
@@ -61,26 +62,29 @@
                     </table>
                 </div><hr>
                 <div>
+                    <div>
+                        <h3>#2 AutoScale Configuration</h3>
+                    </div>
                     <form id="managerLoginForm" class="pure-form pure-form-aligned">
                         <fieldset>
                             <div class="pure-control-group">
-                                <label for="autoScaleCPUThresholdGrow">Grow - CPU Threshold</label>
-                                <input id="autoScaleCPUThresholdGrow" type="text" placeholder="70">
+                                <label for="autoScaleCPUThresholdGrow">Grow Threshold</label>
+                                <input id="autoScaleCPUThresholdGrow" type="text" placeholder="Default: 70">
                                 <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
                             </div>
                             <div class="pure-control-group">
-                                <label for="autoScaleCPUThresholdShrink">Shrink - CPU Threshold</label>
-                                <input id="autoScaleCPUThresholdShrink" type="password" placeholder="20">
+                                <label for="autoScaleCPUThresholdShrink">Shrink Threshold</label>
+                                <input id="autoScaleCPUThresholdShrink" type="text" placeholder="Default: 20">
                                 <span class="pure-form-message-inline">(Range 5 - 90, Integer)</span>
                             </div>
                             <div class="pure-control-group">
-                                <label for="autoScaleRatioGrow">Grow - Ratio</label>
-                                <input id="autoScaleRatioGrow" type="text" placeholder="2">
+                                <label for="autoScaleRatioGrow">Grow Ratio</label>
+                                <input id="autoScaleRatioGrow" type="text" placeholder="Default: 2">
                                 <span class="pure-form-message-inline">(Integer)</span>
                             </div>
                             <div class="pure-control-group">
-                                <label for="autoScaleRatioShrink">Shrink - Ratio</label>
-                                <input id="autoScaleRatioShrink" type="text" placeholder="4">
+                                <label for="autoScaleRatioShrink">Shrink Ratio</label>
+                                <input id="autoScaleRatioShrink" type="text" placeholder="Default: 4">
                                 <span class="pure-form-message-inline">(Integer)</span>
                             </div>
                             <div class="pure-controls">
@@ -89,8 +93,13 @@
                         </fieldset>
                     </form>
                 </div><hr>
-                <div class="pure-control-group" style="clear:left;">
-                    <br><button class="button-error pure-button" v-on:click="purgeUserData()">Purge User Data</button><br>
+                <div>
+                    <div>
+                        <h3>#3 Purge User Data</h3>
+                    </div>
+                    <div class="pure-control-group" style="clear:left;">
+                        <button class="button-error pure-button" v-on:click="purgeUserData()">Purge User Data</button><br>
+                    </div>
                 </div><hr>
                 <div class="pure-control-group" style="clear:left;">
                     <br><button class="pure-button pure-button-primary" v-on:click="redirectToWelcome()">Logout</button><br>

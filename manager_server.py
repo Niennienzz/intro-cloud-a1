@@ -15,9 +15,10 @@ from resources.manager_metric import ManagerMetric
 # Flask is initialized for this application.
 # Flask-SQLAlchemy uses MySQL server, and uses 'db' as backing database.
 # Flask-JWT tokens have expiration time of one day.
+# TEST: MySQL Server Public Connection
+# ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@54.227.216.190/db'
 def create_app():
     ap = Flask(__name__)
-    # TEST: MySQL Server Connection
     ap.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ece1779:secret@172.31.35.50/db'
     ap.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     ap.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=86400)

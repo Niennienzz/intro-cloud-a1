@@ -190,14 +190,15 @@ var managerHomeApp = new Vue({
                 url: self.managerAutoScaleConfigAPI,
                 method: "POST",
                 headers: {
+                    "content-type": "application/json",
                     "authorization": "JWT " + self.accessToken
                 },
                 processData: false,
-                data: { "cpu_threshold_grow": autoScaleCPUThresholdGrow,
-                        "cpu_threshold_shrink": autoScaleCPUThresholdShrink,
-                        "ratio_grow": autoScaleRatioGrow,
-                        "ratio_shrink": autoScaleRatioShrink
-                }
+                data: '{ "cpu_threshold_grow": "' + autoScaleCPUThresholdGrow + '",' +
+                      '"cpu_threshold_shrink": "' +  autoScaleCPUThresholdShrink + '",' +
+                      '"ratio_grow": "' + autoScaleRatioGrow + '",' +
+                      '"ratio_shrink": "' + autoScaleRatioShrink + '"' +
+                '}'
             };
             $.ajax(settings)
                 .done(function (response) {

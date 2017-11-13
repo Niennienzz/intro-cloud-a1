@@ -64,9 +64,9 @@ class ManagerAutoScale(Resource):
         data = ManagerAutoScale.parser.parse_args()
 
         # validate data
-        if not (5 < data['cpu_threshold_grow'] < 90):
+        if not (5 <= data['cpu_threshold_grow'] <= 90):
             return {'message': 'invalid cpu_threshold_grow (10 to 90)'}, 404
-        if not (5 < data['cpu_threshold_shrink'] < 90):
+        if not (5 <= data['cpu_threshold_shrink'] <= 90):
             return {'message': 'invalid cpu_threshold_shrink (10 to 90)'}, 404
         if data['cpu_threshold_grow'] < data['cpu_threshold_shrink']:
             return {'message': 'cpu_threshold_grow must be greater than cpu_threshold_shrink'}, 404

@@ -188,7 +188,7 @@ var managerHomeApp = new Vue({
                 async: true,
                 crossDomain: true,
                 url: self.managerAutoScaleConfigAPI,
-                method: "DELETE",
+                method: "POST",
                 headers: {
                     "authorization": "JWT " + self.accessToken
                 },

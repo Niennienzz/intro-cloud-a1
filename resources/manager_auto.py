@@ -103,21 +103,27 @@ def start_observing(context):
         except botocore.exceptions.ClientError as e:
             print(e)
 
+        # print each worker's cpu utilization, calculate sum
         cpu_sum = 0
         for key, cpu in enumerate(results):
             print('[Manager AutoScaling - Worker #%d: | CPU Utilization: %f]' % (key, cpu))
             cpu_sum += cpu
 
+        # calculate average
         average = 0
         if len(results) != 0:
             average = cpu_sum/len(results)
             print('[Manager AutoScaling - Average CPU Utilization: %f]' % average)
-        else:
+
+        # skip invalid metrics
+        if average < 1:
             print('[Manager AutoScaling - Waiting For More CPU Metrics]')
+            threading.Timer(10, start_observing, [context]).start()
+            return
 
         if len(results) != 0 and average > auto_scale_parameters['cpu_threshold_grow']:
             scale_up(auto_scale_parameters['ratio_grow'])
-        elif len(results) != 0 and average < auto_scale_parameters['cpu_threshold_shrink']:
+        elif len(results) != 0 and auto_scale_parameters['cpu_threshold_shrink']:
             scale_down(auto_scale_parameters['ratio_shrink'])
         else:
             print('[Manager AutoScaling - Balanced]')
@@ -125,6 +131,7 @@ def start_observing(context):
         # setup next iteration monitoring
         print('==================================================')
         threading.Timer(10, start_observing, [context]).start()
+        return
 
 
 def scale_up(up_ratio):

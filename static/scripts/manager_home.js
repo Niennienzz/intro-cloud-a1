@@ -211,7 +211,7 @@ var managerHomeApp = new Vue({
                 .fail(function (response) {
                     swal(
                         "Oops...",
-                        "AutoScale config: " + response.message,
+                        "AutoScale config: " + response.responseJSON.message,
                         "error"
                     )
                     console.log(response);
